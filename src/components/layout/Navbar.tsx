@@ -26,8 +26,8 @@ const Navbar = () => {
         <div className="flex items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-white text-2xl font-bold">
-              Deniz
+            <Link href="/" className="text-white text-xl font-bold">
+              Deniz Barçak
             </Link>
           </div>
           
