@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSelector from '../ui/LanguageSelector';
 
 const Navbar = () => {
@@ -16,6 +17,8 @@ const Navbar = () => {
     { name: 'Resume', path: '/resume' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  const genericHamburgerLine = `h-0.5 w-6 my-0.5 rounded-full bg-current transition ease transform duration-300`;
 
   return (
     <nav className="fixed w-full z-50 bg-primary/90 backdrop-blur-sm">
@@ -52,72 +55,94 @@ const Navbar = () => {
             <LanguageSelector />
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation Button */}
           <div className="md:hidden flex flex-1 justify-end">
             <div className="flex items-center">
               <LanguageSelector />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="ml-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-accent hover:bg-secondary focus:outline-none"
+                className="ml-2 flex flex-col h-10 w-10 rounded justify-center items-center group"
+                aria-label="Menu"
               >
-                <span className="sr-only">Open main menu</span>
-                {!isOpen ? (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                )}
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "rotate-45 translate-y-1.5 opacity-100 group-hover:opacity-100"
+                      : "opacity-100 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen 
+                      ? "opacity-0" 
+                      : "opacity-100 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "-rotate-45 -translate-y-1.5 opacity-100 group-hover:opacity-100"
+                      : "opacity-100 group-hover:opacity-100"
+                  }`}
+                />
               </button>
             </div>
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-secondary rounded-md">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
-                    pathname === item.path
-                      ? 'text-accent'
-                      : 'text-gray-300 hover:text-accent'
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "100vh" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 top-16 bg-primary z-40 md:hidden"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: 0.1, duration: 0.3 }}
+                className="flex flex-col items-center pt-6"
+              >
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                    className="w-full text-center flex flex-col items-center"
+                  >
+                    <Link
+                      href={item.path}
+                      className={`block py-4 text-3xl font-medium tracking-wide ${
+                        pathname === item.path
+                          ? 'text-accent'
+                          : 'text-gray-300 hover:text-accent'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: index * 0.1 + 0.2, duration: 0.3 }}
+                      className={`h-px w-24 ${
+                        pathname === item.path
+                          ? 'bg-accent'
+                          : 'bg-gray-700'
+                      }`}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
