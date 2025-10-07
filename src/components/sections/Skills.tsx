@@ -35,10 +35,46 @@ const Skills = () => {
   ];
 
   const devSkills = [
-    'HTML',
-    'CSS',
-    'React',
-    'GoLang',
+    {
+      name: 'HTML & CSS',
+      detail: 'Web Fundamentals',
+    },
+    {
+      name: 'JavaScript',
+      detail: 'ES6+',
+    },
+    {
+      name: 'TypeScript',
+      detail: 'Type-Safe JavaScript',
+    },
+    {
+      name: 'React',
+      detail: 'UI Library',
+    },
+    {
+      name: 'Next.js',
+      detail: 'React Framework',
+    },
+    {
+      name: 'Tailwind CSS',
+      detail: 'Utility-First CSS',
+    },
+    {
+      name: 'Go',
+      detail: 'Backend Development',
+    },
+    {
+      name: 'C#',
+      detail: '.NET Development',
+    },
+    {
+      name: 'MongoDB',
+      detail: 'NoSQL Database',
+    },
+    {
+      name: 'Microsoft SQL',
+      detail: 'Relational Database',
+    },
   ];
 
   const cardVariants = {
@@ -54,13 +90,7 @@ const Skills = () => {
   };
 
   return (
-    <section className="py-20 bg-primary relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute transform rotate-45 -right-1/4 -top-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full"></div>
-        <div className="absolute transform -rotate-45 -left-1/4 -bottom-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full"></div>
-      </div>
-
+    <section className="py-20">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -94,7 +124,7 @@ const Skills = () => {
                   whileInView="visible"
                   viewport={{ once: true }}
                   variants={cardVariants}
-                  className="p-4 bg-secondary rounded-lg group hover:bg-accent/20 transition-colors duration-300"
+                  className="p-4 bg-secondary rounded-lg group hover:bg-accent/20 transition-all duration-300"
                 >
                   <p className="text-gray-300 group-hover:text-white font-medium">
                     {skill.name}
@@ -121,15 +151,22 @@ const Skills = () => {
             <div className="grid grid-cols-2 gap-4">
               {devSkills.map((skill, index) => (
                 <motion.div
-                  key={skill}
+                  key={skill.name}
                   custom={index}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   variants={cardVariants}
-                  className="p-4 bg-secondary rounded-lg group hover:bg-accent/20 transition-colors duration-300"
+                  className="p-4 bg-secondary rounded-lg group hover:bg-accent/20 transition-all duration-300"
                 >
-                  <p className="text-gray-300 group-hover:text-white font-medium">{skill}</p>
+                  <p className="text-gray-300 group-hover:text-white font-medium">
+                    {skill.name}
+                    {skill.detail && (
+                      <span className="block text-sm text-gray-400 group-hover:text-gray-300 mt-1">
+                        {skill.detail}
+                      </span>
+                    )}
+                  </p>
                 </motion.div>
               ))}
             </div>

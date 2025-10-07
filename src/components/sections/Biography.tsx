@@ -1,20 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence, useScroll } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 const Biography = () => {
-  const [showScroll, setShowScroll] = useState(true);
-  const { scrollY } = useScroll();
-
-  useEffect(() => {
-    const unsubscribe = scrollY.on('change', (latest) => {
-      setShowScroll(latest < 100);
-    });
-
-    return () => unsubscribe();
-  }, [scrollY]);
-
   const education = [
     {
       school: 'Üçüncü Binyıl Academy',
@@ -34,7 +22,7 @@ const Biography = () => {
   ];
 
   return (
-    <section className="pt-12 pb-24 bg-primary">
+    <section className="pt-12 pb-24">
       <div className="container mx-auto px-4 relative">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Left Column - Bio Info */}
@@ -103,43 +91,38 @@ const Biography = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <AnimatePresence>
-          {showScroll && (
-            <motion.div 
-              className="absolute left-1/4 transform -translate-x-1/2 -bottom-14 flex flex-col items-center"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
+        <motion.div 
+          className="absolute left-1/4 transform -translate-x-1/2 -bottom-14 flex flex-col items-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
+          <motion.div
+            animate={{
+              y: [0, 10, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <svg 
+              className="w-6 h-6 text-accent"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
             >
-              <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
-              <motion.div
-                animate={{
-                  y: [0, 10, 0],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <svg 
-                  className="w-6 h-6 text-accent"
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                  />
-                </svg>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

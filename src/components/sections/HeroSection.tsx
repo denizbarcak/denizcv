@@ -5,11 +5,16 @@ import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen flex items-center bg-primary text-white">
+    <div className="min-h-screen flex items-center">
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-xl"
+        >
           <motion.h1 
-            className="text-6xl md:text-8xl font-bold mb-4"
+            className="text-6xl md:text-8xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -17,15 +22,15 @@ const HeroSection = () => {
             Hello!
           </motion.h1>
           <motion.h2 
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            I Am Deniz Barcak
+            I Am Deniz Barçak
           </motion.h2>
           <motion.p 
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl"
+            className="text-xl md:text-2xl text-gray-300 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -46,7 +51,7 @@ const HeroSection = () => {
               Download CV
             </Link>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
