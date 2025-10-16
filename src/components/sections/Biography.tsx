@@ -1,26 +1,29 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { getTranslation } from '@/locales/translations';
 
 const Biography = () => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 200], [1, 0]);
+  const { language } = useLanguage();
   
-  const education = [
+  const getEducation = () => [
     {
-      school: 'Üçüncü Binyıl Academy',
-      program: 'Software Development',
-      period: 'Sep 2023 - Dec 2024',
+      school: getTranslation(language, 'education.ucuncu_binyil.name'),
+      program: getTranslation(language, 'education.ucuncu_binyil.program'),
+      period: getTranslation(language, 'education.ucuncu_binyil.period'),
     },
     {
-      school: 'Halic University',
-      program: 'Interior Design',
-      period: '2018 - 2020',
+      school: getTranslation(language, 'education.halic.name'),
+      program: getTranslation(language, 'education.halic.program'),
+      period: getTranslation(language, 'education.halic.period'),
     },
     {
-      school: 'Ata College',
-      program: 'High School',
-      period: '2011 - 2014',
+      school: getTranslation(language, 'education.ata.name'),
+      program: getTranslation(language, 'education.ata.program'),
+      period: getTranslation(language, 'education.ata.period'),
     },
   ];
 
@@ -36,7 +39,9 @@ const Biography = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h2 className="text-3xl font-bold text-white">Personal Information</h2>
+            <h2 className="text-3xl font-bold text-white">
+              {getTranslation(language, 'about.personal_info')}
+            </h2>
             <div className="space-y-4">
               {/* Location */}
               <div className="flex items-center space-x-4">
@@ -47,8 +52,12 @@ const Biography = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Location</h3>
-                  <p className="text-gray-400">Istanbul, Turkey</p>
+                  <h3 className="text-white font-medium">
+                    {getTranslation(language, 'about.location')}
+                  </h3>
+                  <p className="text-gray-400">
+                    {getTranslation(language, 'about.location_value')}
+                  </p>
                 </div>
               </div>
 
@@ -60,8 +69,12 @@ const Biography = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Languages</h3>
-                  <p className="text-gray-400">English, Turkish</p>
+                  <h3 className="text-white font-medium">
+                    {getTranslation(language, 'about.languages')}
+                  </h3>
+                  <p className="text-gray-400">
+                    {getTranslation(language, 'about.languages_value')}
+                  </p>
                 </div>
               </div>
 
@@ -73,8 +86,12 @@ const Biography = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Birth Date</h3>
-                  <p className="text-gray-400">26.08.1996</p>
+                  <h3 className="text-white font-medium">
+                    {getTranslation(language, 'about.birth_date')}
+                  </h3>
+                  <p className="text-gray-400">
+                    {getTranslation(language, 'about.birth_date_value')}
+                  </p>
                 </div>
               </div>
 
@@ -86,8 +103,12 @@ const Biography = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Military Service</h3>
-                  <p className="text-gray-400">Completed</p>
+                  <h3 className="text-white font-medium">
+                    {getTranslation(language, 'about.military')}
+                  </h3>
+                  <p className="text-gray-400">
+                    {getTranslation(language, 'about.military_value')}
+                  </p>
                 </div>
               </div>
 
@@ -99,8 +120,12 @@ const Biography = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-white font-medium">Driver's License</h3>
-                  <p className="text-gray-400">Class A and B</p>
+                  <h3 className="text-white font-medium">
+                    {getTranslation(language, 'about.drivers_license')}
+                  </h3>
+                  <p className="text-gray-400">
+                    {getTranslation(language, 'about.drivers_license_value')}
+                  </p>
                 </div>
               </div>
             </div>
@@ -115,9 +140,9 @@ const Biography = () => {
             className="space-y-8"
           >
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-white">Education</h2>
+              <h2 className="text-3xl font-bold text-white">{getTranslation(language, 'about.education')}</h2>
               <div className="space-y-4">
-                {education.map((edu, index) => (
+                {getEducation().map((edu, index) => (
                   <motion.div
                     key={edu.school}
                     initial={{ opacity: 0, y: 20 }}
@@ -143,7 +168,7 @@ const Biography = () => {
           className="absolute left-1/4 transform -translate-x-1/2 -bottom-14 flex flex-col items-center"
           style={{ opacity }}
         >
-          <span className="text-gray-400 text-sm mb-2">Scroll Down</span>
+          <span className="text-gray-400 text-sm mb-2">{getTranslation(language, 'about.scroll_down')}</span>
           <motion.div
             animate={{
               y: [0, 10, 0],
