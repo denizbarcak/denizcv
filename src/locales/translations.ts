@@ -11,6 +11,48 @@ export const translations = {
       contact: 'Contact',
     },
 
+    // Contact Page
+    contact: {
+      title: 'Contact',
+      methods: {
+        email: 'Email',
+        whatsapp: 'WhatsApp',
+        phone: 'Phone',
+        linkedin: 'LinkedIn',
+        github: 'GitHub'
+      }
+    },
+
+    // Resume Page
+    resume: {
+      professional_journey: 'Professional Journey',
+      download_cv: 'Download CV (PDF)',
+      achievements: {
+        kartelam: [
+          'Contributed to frontend and backend development of a B2B fabric supply platform.',
+          'Utilized Go (Fiber), Next.js, React, and MongoDB technologies.',
+          'Developed order management, product, and variant systems between suppliers and stores.',
+          'Designed API integrations, authentication (JWT), and admin panel architecture.',
+        ],
+        teampack: [
+          'Designed custom packaging solutions, vacuum forms, and color charts for various products.',
+          'Prepared 3D technical modeling of vacuum molds using Fusion 360.',
+          'Created 3D product visualizations and provided technical support for the production process.',
+        ],
+        atlas34: [
+          'Managed interior architectural design, visualization, and project management for residential and villa projects.',
+          'Developed design concepts and implementation details based on client requirements.',
+        ],
+        tabanlioglu: [
+          'Provided support with AutoCAD drawings and 3D visualizations.',
+          'Contributed to international projects including DIFC 2.0 (Dubai), Neuwied (Germany), and Folkart Alacati.',
+        ],
+        kavram: [
+          'Assisted with VAT refund reports and filing processes.',
+        ]
+      }
+    },
+
     // Portfolio Categories
     portfolio_categories: {
       design: '3D & Design',
@@ -81,6 +123,48 @@ export const translations = {
       portfolio: 'Portfolyo',
       resume: 'Özgeçmiş',
       contact: 'İletişim',
+    },
+
+    // Contact Page
+    contact: {
+      title: 'İletişim',
+      methods: {
+        email: 'E-posta',
+        whatsapp: 'WhatsApp',
+        phone: 'Telefon',
+        linkedin: 'LinkedIn',
+        github: 'GitHub'
+      }
+    },
+
+    // Resume Page
+    resume: {
+      professional_journey: 'Profesyonel Yolculuk',
+      download_cv: 'CV İndir (PDF)',
+      achievements: {
+        kartelam: [
+          'B2B kumaş tedarik platformunun frontend ve backend geliştirmesine katkıda bulundum.',
+          'Go (Fiber), Next.js, React ve MongoDB teknolojilerini kullandım.',
+          'Tedarikçiler ve mağazalar arasında sipariş yönetimi, ürün ve varyant sistemleri geliştirdim.',
+          'API entegrasyonları, kimlik doğrulama (JWT) ve yönetici paneli mimarisi tasarladım.',
+        ],
+        teampack: [
+          'Çeşitli ürünler için özel ambalaj çözümleri, vakum formları ve renk kartları tasarladım.',
+          'Fusion 360 kullanarak vakum kalıplarının 3D teknik modellemesini hazırladım.',
+          'Üretim süreci için 3D ürün görselleştirmeleri oluşturdum ve teknik destek sağladım.',
+        ],
+        atlas34: [
+          'Konut ve villa projeleri için iç mimari tasarım, görselleştirme ve proje yönetimi yaptım.',
+          'Müşteri gereksinimlerine göre tasarım konseptleri ve uygulama detayları geliştirdim.',
+        ],
+        tabanlioglu: [
+          'AutoCAD çizimleri ve 3D görselleştirmeler konusunda destek sağladım.',
+          'DIFC 2.0 (Dubai), Neuwied (Almanya) ve Folkart Alaçatı dahil uluslararası projelere katkıda bulundum.',
+        ],
+        kavram: [
+          'KDV iade raporları ve dosyalama süreçlerinde yardımcı oldum.',
+        ]
+      }
     },
 
     // Portfolio Categories

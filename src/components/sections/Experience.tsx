@@ -1,72 +1,59 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { getTranslation } from '@/locales/translations';
 
 const Experience = () => {
+  const { language } = useLanguage();
+
   const experiences = [
     {
       company: 'Kartelam',
       position: 'Full Stack Developer',
-      location: 'Istanbul',
-      period: 'Oct 2024 – Apr 2025',
-      achievements: [
-        'Contributed to frontend and backend development of a B2B fabric supply platform.',
-        'Utilized Go (Fiber), Next.js, React, and MongoDB technologies.',
-        'Developed order management, product, and variant systems between suppliers and stores.',
-        'Designed API integrations, authentication (JWT), and admin panel architecture.',
-      ],
+      location: 'İstanbul',
+      period: 'Eki 2024 – Nis 2025',
+      achievements: getTranslation(language, 'resume.achievements.kartelam'),
     },
     {
       company: 'Teampack Packaging Services Inc.',
-      position: 'Industrial Designer',
-      location: 'Atasehir, Istanbul',
-      period: 'Jul 2022 – May 2023',
-      achievements: [
-        'Designed custom packaging solutions, vacuum forms, and color charts for various products.',
-        'Prepared 3D technical modeling of vacuum molds using Fusion 360.',
-        'Created 3D product visualizations and provided technical support for the production process.',
-      ],
+      position: 'Endüstriyel Tasarımcı',
+      location: 'Ataşehir, İstanbul',
+      period: 'Tem 2022 – May 2023',
+      achievements: getTranslation(language, 'resume.achievements.teampack'),
     },
     {
-      company: 'Atlas 34 Construction',
-      position: 'Interior Architect',
-      location: 'Istanbul',
-      period: 'Jul 2021 – Jun 2022',
-      achievements: [
-        'Managed interior architectural design, visualization, and project management for residential and villa projects.',
-        'Developed design concepts and implementation details based on client requirements.',
-      ],
+      company: 'Atlas 34 İnşaat',
+      position: 'İç Mimar',
+      location: 'İstanbul',
+      period: 'Tem 2021 – Haz 2022',
+      achievements: getTranslation(language, 'resume.achievements.atlas34'),
     },
     {
-      company: 'Tabanlioglu Architects',
-      position: 'Interior Architecture Intern',
-      location: 'Istanbul',
-      period: 'Jun 2019 – Jul 2019',
-      achievements: [
-        'Provided support with AutoCAD drawings and 3D visualizations.',
-        'Contributed to international projects including DIFC 2.0 (Dubai), Neuwied (Germany), and Folkart Alacati.',
-      ],
+      company: 'Tabanlıoğlu Mimarlık',
+      position: 'İç Mimarlık Stajyeri',
+      location: 'İstanbul',
+      period: 'Haz 2019 – Tem 2019',
+      achievements: getTranslation(language, 'resume.achievements.tabanlioglu'),
     },
     {
-      company: 'Kavram Independent Audit',
-      position: 'Office Assistant',
-      location: 'Istanbul',
-      period: 'Jan 2016 – Feb 2017',
-      achievements: [
-        'Assisted with VAT refund reports and filing processes.',
-      ],
+      company: 'Kavram Bağımsız Denetim',
+      position: 'Ofis Asistanı',
+      location: 'İstanbul',
+      period: 'Oca 2016 – Şub 2017',
+      achievements: getTranslation(language, 'resume.achievements.kavram'),
     },
     {
-      company: 'Doka Formwork Technology',
-      position: 'Summer Intern',
-      location: 'Istanbul',
+      company: 'Doka Kalıp Teknolojileri',
+      position: 'Yaz Stajyeri',
+      location: 'İstanbul',
       period: '2015',
       achievements: [],
     },
     {
-      company: 'Consulta Independent Audit',
-      position: 'Summer Intern',
-      location: 'Istanbul',
+      company: 'Consulta Bağımsız Denetim',
+      position: 'Yaz Stajyeri',
+      location: 'İstanbul',
       period: '2013',
       achievements: [],
     },
@@ -149,7 +136,7 @@ const Experience = () => {
                   d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              Download Full CV (PDF)
+              {getTranslation(language, 'resume.download_cv')}
             </a>
           </motion.div>
         </div>

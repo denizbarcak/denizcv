@@ -1,11 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { getTranslation } from '@/locales/translations';
 
 const ContactInfo = () => {
+  const { language } = useLanguage();
   const contactMethods = [
     {
-      title: 'Email',
+      title: getTranslation(language, 'contact.methods.email'),
       value: 'denizbarcakk@gmail.com',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -15,7 +18,7 @@ const ContactInfo = () => {
       link: 'mailto:denizbarcakk@gmail.com'
     },
     {
-      title: 'WhatsApp',
+      title: getTranslation(language, 'contact.methods.whatsapp'),
       value: '+90 539 483 2322',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -25,7 +28,7 @@ const ContactInfo = () => {
       link: 'https://wa.me/905394832322'
     },
     {
-      title: 'Phone',
+      title: getTranslation(language, 'contact.methods.phone'),
       value: '+90 539 483 2322',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,7 +38,7 @@ const ContactInfo = () => {
       link: 'tel:+905394832322'
     },
     {
-      title: 'LinkedIn',
+      title: getTranslation(language, 'contact.methods.linkedin'),
       value: 'linkedin.com/in/denizbarcak',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -45,7 +48,7 @@ const ContactInfo = () => {
       link: 'https://linkedin.com/in/denizbarcak'
     },
     {
-      title: 'GitHub',
+      title: getTranslation(language, 'contact.methods.github'),
       value: 'github.com/denizbarcak',
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
