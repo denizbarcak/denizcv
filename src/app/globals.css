@@ -3,24 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --primary: #0A192F;
-  --secondary: #112240;
-  --accent: #64FFDA;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 body {
-  @apply bg-primary text-white;
-  font-feature-settings: "liga" 1;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
-@layer base {
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-}
-
-@layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

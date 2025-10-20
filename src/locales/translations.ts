@@ -2,6 +2,163 @@ export type Language = 'en' | 'tr';
 
 export const translations = {
   en: {
+    // Portfolio Page
+    portfolio: {
+      design: {
+        title: '3D & Design',
+        view_project: 'View Project',
+        projects: {
+          video_project: {
+            title: 'Video & Animation Projects',
+            description: 'A collection of video and animation works showcasing dynamic visual storytelling.',
+            gallery: [
+              {
+                src: '/3D/staffs/1.jpg',
+                title: 'Video Project 1',
+                description: 'Dynamic visual composition'
+              },
+              {
+                src: '/3D/staffs/2.jpg',
+                title: 'Video Project 2',
+                description: 'Animated sequence'
+              },
+              {
+                src: '/3D/staffs/4.jpg',
+                title: 'Video Project 3',
+                description: 'Motion graphics'
+              },
+              {
+                src: '/3D/staffs/Alltap.jpg',
+                title: 'Video Project 4',
+                description: 'Product visualization'
+              },
+              {
+                src: '/3D/staffs/Bardaklık.jpg',
+                title: 'Video Project 5',
+                description: 'Interior design'
+              },
+              {
+                src: '/3D/staffs/Kare1.jpg',
+                title: 'Video Project 6',
+                description: 'Architectural detail'
+              },
+              {
+                src: '/3D/staffs/Kare2.jpg',
+                title: 'Video Project 7',
+                description: 'Modern design concept'
+              }
+            ]
+          },
+          silivri_villa: {
+            title: 'Silivri Villa Project',
+            description: 'Modern villa project featuring contemporary architecture with pool and landscape design.',
+            gallery: [
+              {
+                src: '/3D/Silivri villa/1.jpg',
+                title: 'Front View',
+                description: 'Main entrance and front facade of the villa'
+              },
+              {
+                src: '/3D/Silivri villa/4.jpg',
+                title: 'Pool Area',
+                description: 'Swimming pool and outdoor living space'
+              },
+              {
+                src: '/3D/Silivri villa/Havuz cephe.jpg',
+                title: 'Pool Facade',
+                description: 'View from the pool area showing the villa facade'
+              },
+              {
+                src: '/3D/Silivri villa/Ön çephe.jpg',
+                title: 'Front Facade',
+                description: 'Detailed view of the front facade architecture'
+              },
+              {
+                src: '/3D/Silivri villa/Plan-1.png',
+                title: 'Floor Plan',
+                description: 'Architectural floor plan of the villa'
+              },
+              {
+                src: '/3D/Silivri villa/MİMARİ PROJESl.png',
+                title: 'Architectural Project',
+                description: 'Complete architectural project overview'
+              }
+            ]
+          },
+          jetkent: {
+            title: 'Jetkent Housing Project',
+            description: 'Modern residential project featuring contemporary architecture and sustainable design solutions.',
+            gallery: [
+              {
+                src: '/3D/Jetkent/m1.jpg',
+                title: 'Main View',
+                description: 'Main perspective of the residential complex'
+              },
+              {
+                src: '/3D/Jetkent/m2.jpg',
+                title: 'Side View',
+                description: 'Side perspective showing architectural details'
+              },
+              {
+                src: '/3D/Jetkent/3.jpg',
+                title: 'Aerial View',
+                description: 'Bird\'s eye view of the entire complex'
+              }
+            ]
+          },
+          difc: {
+            title: 'DIFC 2.0 Dubai',
+            description: 'Dubai International Financial Centre expansion project featuring modern architectural design and innovative space solutions.',
+            location: 'Dubai, UAE',
+            year: '2019',
+            category: 'Architectural Visualization',
+            gallery: [
+              {
+                src: '/3D/DİFC/Kapak.jpg',
+                title: 'Main Entrance View',
+                description: 'The grand entrance featuring modern architecture with palm trees and glass facades'
+              },
+              {
+                src: '/3D/DİFC/470_DIFC_2.jpg',
+                title: 'Exterior View',
+                description: 'Exterior perspective showing the building\'s distinctive architectural elements'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215850.jpg',
+                title: 'Night View',
+                description: 'Evening perspective highlighting the building\'s illumination'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215952.jpg',
+                title: 'Interior Court',
+                description: 'Internal courtyard with natural lighting and vegetation'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220329.jpg',
+                title: 'Aerial View',
+                description: 'Bird\'s eye view of the complex showing the overall layout'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220502.jpg',
+                title: 'Plaza Detail',
+                description: 'Detailed view of the plaza showing architectural elements'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221509.jpg',
+                title: 'Facade Detail',
+                description: 'Close-up view of the building\'s facade patterns'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221700.jpg',
+                title: 'Courtyard View',
+                description: 'Internal courtyard showing the integration of nature and architecture'
+              }
+            ]
+          }
+        }
+      }
+    },
+
     // Navigation
     nav: {
       home: 'Home',
@@ -116,6 +273,163 @@ export const translations = {
   },
 
   tr: {
+    // Portfolio Page
+    portfolio: {
+      design: {
+        title: '3D & Tasarım',
+        view_project: 'Projeyi Görüntüle',
+        projects: {
+          video_project: {
+            title: 'Video & Animasyon Projeleri',
+            description: 'Dinamik görsel anlatımı sergileyen video ve animasyon çalışmaları koleksiyonu.',
+            gallery: [
+              {
+                src: '/3D/staffs/1.jpg',
+                title: 'Video Projesi 1',
+                description: 'Dinamik görsel kompozisyon'
+              },
+              {
+                src: '/3D/staffs/2.jpg',
+                title: 'Video Projesi 2',
+                description: 'Animasyonlu sekans'
+              },
+              {
+                src: '/3D/staffs/4.jpg',
+                title: 'Video Projesi 3',
+                description: 'Hareket grafikleri'
+              },
+              {
+                src: '/3D/staffs/Alltap.jpg',
+                title: 'Video Projesi 4',
+                description: 'Ürün görselleştirme'
+              },
+              {
+                src: '/3D/staffs/Bardaklık.jpg',
+                title: 'Video Projesi 5',
+                description: 'İç mekan tasarımı'
+              },
+              {
+                src: '/3D/staffs/Kare1.jpg',
+                title: 'Video Projesi 6',
+                description: 'Mimari detay'
+              },
+              {
+                src: '/3D/staffs/Kare2.jpg',
+                title: 'Video Projesi 7',
+                description: 'Modern tasarım konsepti'
+              }
+            ]
+          },
+          silivri_villa: {
+            title: 'Silivri Villa Projesi',
+            description: 'Havuz ve peyzaj tasarımı ile modern mimari özellikler taşıyan villa projesi.',
+            gallery: [
+              {
+                src: '/3D/Silivri villa/1.jpg',
+                title: 'Ön Görünüm',
+                description: 'Villanın ana girişi ve ön cephesi'
+              },
+              {
+                src: '/3D/Silivri villa/4.jpg',
+                title: 'Havuz Alanı',
+                description: 'Yüzme havuzu ve dış yaşam alanı'
+              },
+              {
+                src: '/3D/Silivri villa/Havuz cephe.jpg',
+                title: 'Havuz Cephesi',
+                description: 'Havuz alanından villa cephesi görünümü'
+              },
+              {
+                src: '/3D/Silivri villa/Ön çephe.jpg',
+                title: 'Ön Cephe',
+                description: 'Ön cephe mimarisinin detaylı görünümü'
+              },
+              {
+                src: '/3D/Silivri villa/Plan-1.png',
+                title: 'Kat Planı',
+                description: 'Villanın mimari kat planı'
+              },
+              {
+                src: '/3D/Silivri villa/MİMARİ PROJESl.png',
+                title: 'Mimari Proje',
+                description: 'Tüm mimari proje genel görünümü'
+              }
+            ]
+          },
+          jetkent: {
+            title: 'Jetkent Konut Projesi',
+            description: 'Modern mimari ve sürdürülebilir tasarım çözümleri içeren çağdaş konut projesi.',
+            gallery: [
+              {
+                src: '/3D/Jetkent/m1.jpg',
+                title: 'Ana Görünüm',
+                description: 'Konut kompleksinin ana perspektifi'
+              },
+              {
+                src: '/3D/Jetkent/m2.jpg',
+                title: 'Yan Görünüm',
+                description: 'Mimari detayları gösteren yan perspektif'
+              },
+              {
+                src: '/3D/Jetkent/3.jpg',
+                title: 'Kuş Bakışı Görünüm',
+                description: 'Tüm kompleksin havadan görünümü'
+              }
+            ]
+          },
+          difc: {
+            title: 'DIFC 2.0 Dubai',
+            description: 'Dubai Uluslararası Finans Merkezi genişletme projesi, modern mimari tasarım ve yenilikçi alan çözümleri içerir.',
+            location: 'Dubai, BAE',
+            year: '2019',
+            category: 'Mimari Görselleştirme',
+            gallery: [
+              {
+                src: '/3D/DİFC/Kapak.jpg',
+                title: 'Ana Giriş Görünümü',
+                description: 'Palmiye ağaçları ve cam cephelerle modern mimariye sahip görkemli giriş'
+              },
+              {
+                src: '/3D/DİFC/470_DIFC_2.jpg',
+                title: 'Dış Görünüm',
+                description: 'Binanın karakteristik mimari öğelerini gösteren dış perspektif'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215850.jpg',
+                title: 'Gece Görünümü',
+                description: 'Binanın aydınlatmasını vurgulayan akşam perspektifi'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215952.jpg',
+                title: 'İç Avlu',
+                description: 'Doğal aydınlatma ve bitkilendirmeye sahip iç avlu'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220329.jpg',
+                title: 'Kuş Bakışı Görünüm',
+                description: 'Kompleksin genel yerleşimini gösteren havadan görünüm'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220502.jpg',
+                title: 'Plaza Detayı',
+                description: 'Plazanın mimari öğelerini gösteren detaylı görünüm'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221509.jpg',
+                title: 'Cephe Detayı',
+                description: 'Bina cephe desenlerinin yakın görünümü'
+              },
+              {
+                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221700.jpg',
+                title: 'Avlu Görünümü',
+                description: 'Doğa ve mimarinin bütünleşmesini gösteren iç avlu'
+              }
+            ]
+          }
+        }
+      }
+    },
+
     // Navigation
     nav: {
       home: 'Ana Sayfa',
