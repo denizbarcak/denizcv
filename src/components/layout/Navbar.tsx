@@ -73,10 +73,10 @@ const Navbar = () => {
                   >
                     {item.dropdown ? (
                       <button
-                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-default ${
                           pathname?.startsWith('/portfolio')
                             ? 'text-accent'
-                            : 'text-gray-300 hover:text-accent'
+                            : 'text-gray-300'
                         }`}
                       >
                         {item.name}

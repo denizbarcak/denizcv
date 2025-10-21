@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/locales/translations';
 import Image from 'next/image';
@@ -19,15 +19,15 @@ export default function PortfolioDesign() {
   const [videoScrollProgress, setVideoScrollProgress] = useState(0);
   const [jetkentScrollProgress, setJetkentScrollProgress] = useState(0);
 
-  // Auto-rotate video images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const videoGallery = getTranslation(language, 'portfolio.design.projects.video_project.gallery') as unknown as GalleryImage[];
-      setSelectedVideoImage((prev) => (prev < videoGallery.length - 1 ? prev + 1 : 0));
-    }, 3000); // Change image every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [language]);
+  // Color mapping for buttons
+  const colorMap: { [key: string]: string } = {
+    'Crimson': 'bg-[#B11B15]',
+    'Retro Siyah': 'bg-[#584D47]',
+    'Bebek Mavi': 'bg-[#AEC0D3]',
+    'Antik Pembe': 'bg-[#D66264]',
+    'Başak': 'bg-[#E3DB38]',
+    'Kese Kağıdı': 'bg-[#C3B497]'
+  };
 
   // Scroll to selected image in thumbnail carousel
   const scrollToSelectedDifcImage = (index: number) => {
@@ -413,31 +413,46 @@ export default function PortfolioDesign() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative aspect-[16/9] rounded-xl overflow-hidden mb-8 group"
               >
-                <Image
-                  src={videoGallery[selectedVideoImage].src}
-                  alt={videoGallery[selectedVideoImage].title}
-                  fill
-                  className="object-cover bg-secondary/30 transition-all duration-1000"
-                />
-
-                {/* Image Counter */}
-                <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-                  {selectedVideoImage + 1} / {videoGallery.length}
-                </div>
-
-                {/* Progress Bar */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-accent/10">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    className="h-full bg-accent"
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  />
+                    key={selectedVideoImage}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.1, ease: "easeOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={videoGallery[selectedVideoImage].src}
+                      alt={videoGallery[selectedVideoImage].title}
+                      fill
+                      className="object-cover bg-secondary/30"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Color Selection Buttons */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-black/20 backdrop-blur-sm px-4 py-3 rounded-full">
+                  {videoGallery.map((image, index) => {
+                    console.log('Image title:', image.title);
+                    // Extract color name from file path instead of title
+                    const colorName = image.src.split('/').pop()?.split('-')[1]?.trim() || '';
+                    console.log('Color name:', colorName, 'Color class:', colorMap[colorName]);
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedVideoImage(index)}
+                        className={`w-6 h-6 rounded-full transition-all duration-300 ${colorMap[colorName]} 
+                          ${selectedVideoImage === index 
+                            ? 'scale-125 ring-2 ring-white ring-offset-2 ring-offset-black/20 border border-white/30' 
+                            : 'hover:scale-110 border border-white/20'}
+                          shadow-lg hover:shadow-xl`}
+                        title={image.title}
+                      />
+                    );
+                  })}
                 </div>
+
               </motion.div>
             </div>
           </div>

@@ -1,6 +1,120 @@
 export type Language = 'en' | 'tr';
 
-export const translations = {
+interface TranslationItem {
+  src: string;
+  title: string;
+  description: string;
+}
+
+interface ProjectType {
+  title: string;
+  description: string;
+  gallery: TranslationItem[];
+}
+
+interface TranslationType {
+  portfolio: {
+    design: {
+      title: string;
+      view_project: string;
+      projects: {
+        video_project: ProjectType;
+        silivri_villa: ProjectType;
+        jetkent: ProjectType;
+        difc: ProjectType;
+      };
+    };
+  };
+  portfolio_categories: {
+    design: string;
+    software: string;
+    design_desc: string;
+    software_desc: string;
+      under_construction: {
+        status: string;
+    };
+  };
+  nav: {
+    home: string;
+    about: string;
+    portfolio: string;
+    resume: string;
+    contact: string;
+  };
+  contact: {
+    title: string;
+    methods: {
+      email: string;
+      whatsapp: string;
+      phone: string;
+      linkedin: string;
+      github: string;
+    };
+  };
+  resume: {
+    professional_journey: string;
+    download_cv: string;
+    achievements: {
+      kartelam: string[];
+      teampack: string[];
+      atlas34: string[];
+      tabanlioglu: string[];
+      kavram: string[];
+    };
+  };
+  hero: {
+    greeting: string;
+    name: string;
+    description: string;
+    download_cv: string;
+  };
+  skills: {
+    title: string;
+    design_title: string;
+    software_title: string;
+  };
+  about: {
+    title: string;
+    subtitle: string;
+    personal_info: string;
+    location: string;
+    location_value: string;
+    languages: string;
+    languages_value: string;
+    birth_date: string;
+    birth_date_value: string;
+    military: string;
+    military_value: string;
+    drivers_license: string;
+    drivers_license_value: string;
+    education: string;
+    scroll_down: string;
+  };
+  education: {
+    ucuncu_binyil: {
+      name: string;
+      program: string;
+      period: string;
+    };
+    halic: {
+      name: string;
+      program: string;
+      period: string;
+    };
+    ata: {
+      name: string;
+      program: string;
+      period: string;
+    };
+  };
+}
+
+interface TranslationsType {
+  en: TranslationType;
+  tr: TranslationType;
+}
+
+export const translations: TranslationsType = {
   en: {
     // Portfolio Page
     portfolio: {
@@ -13,39 +127,34 @@ export const translations = {
             description: 'A collection of video and animation works showcasing dynamic visual storytelling.',
             gallery: [
               {
-                src: '/3D/staffs/1.jpg',
-                title: 'Video Project 1',
-                description: 'Dynamic visual composition'
+                src: '/3D/staffs/video/4592-Crimson- 4592.jpg',
+                title: 'Crimson Design',
+                description: 'Modern crimson color concept'
               },
               {
-                src: '/3D/staffs/2.jpg',
-                title: 'Video Project 2',
-                description: 'Animated sequence'
+                src: '/3D/staffs/video/4578-Retro Siyah- 4578.jpg',
+                title: 'Retro Black',
+                description: 'Classic retro black style'
               },
               {
-                src: '/3D/staffs/4.jpg',
-                title: 'Video Project 3',
-                description: 'Motion graphics'
+                src: '/3D/staffs/video/4550-Bebek Mavi- 4550.jpg',
+                title: 'Baby Blue',
+                description: 'Soft baby blue design'
               },
               {
-                src: '/3D/staffs/Alltap.jpg',
-                title: 'Video Project 4',
-                description: 'Product visualization'
+                src: '/3D/staffs/video/4524-Antik Pembe- 4524.jpg',
+                title: 'Antique Pink',
+                description: 'Elegant antique pink concept'
               },
               {
-                src: '/3D/staffs/Bardaklık.jpg',
-                title: 'Video Project 5',
-                description: 'Interior design'
+                src: '/3D/staffs/video/4514-Başak- 4514.jpg',
+                title: 'Başak Design',
+                description: 'Natural wheat-inspired design'
               },
               {
-                src: '/3D/staffs/Kare1.jpg',
-                title: 'Video Project 6',
-                description: 'Architectural detail'
-              },
-              {
-                src: '/3D/staffs/Kare2.jpg',
-                title: 'Video Project 7',
-                description: 'Modern design concept'
+                src: '/3D/staffs/video/4512-Kese Kağıdı- 4512.jpg',
+                title: 'Kraft Paper',
+                description: 'Eco-friendly kraft paper concept'
               }
             ]
           },
@@ -109,9 +218,6 @@ export const translations = {
           difc: {
             title: 'DIFC 2.0 Dubai',
             description: 'Dubai International Financial Centre expansion project featuring modern architectural design and innovative space solutions.',
-            location: 'Dubai, UAE',
-            year: '2019',
-            category: 'Architectural Visualization',
             gallery: [
               {
                 src: '/3D/DİFC/Kapak.jpg',
@@ -159,13 +265,24 @@ export const translations = {
       }
     },
 
+    // Portfolio Categories
+    portfolio_categories: {
+      design: '3D & Design',
+      software: 'Software & Web',
+      design_desc: 'Explore 3D modeling and design projects',
+      software_desc: 'View web development and software projects',
+      under_construction: {
+        status: 'Status: Under Construction 🚧'
+      }
+    },
+
     // Navigation
     nav: {
       home: 'Home',
       about: 'About',
       portfolio: 'Portfolio',
       resume: 'Resume',
-      contact: 'Contact',
+      contact: 'Contact'
     },
 
     // Contact Page
@@ -189,33 +306,25 @@ export const translations = {
           'Contributed to frontend and backend development of a B2B fabric supply platform.',
           'Utilized Go (Fiber), Next.js, React, and MongoDB technologies.',
           'Developed order management, product, and variant systems between suppliers and stores.',
-          'Designed API integrations, authentication (JWT), and admin panel architecture.',
+          'Designed API integrations, authentication (JWT), and admin panel architecture.'
         ],
         teampack: [
           'Designed custom packaging solutions, vacuum forms, and color charts for various products.',
           'Prepared 3D technical modeling of vacuum molds using Fusion 360.',
-          'Created 3D product visualizations and provided technical support for the production process.',
+          'Created 3D product visualizations and provided technical support for the production process.'
         ],
         atlas34: [
           'Managed interior architectural design, visualization, and project management for residential and villa projects.',
-          'Developed design concepts and implementation details based on client requirements.',
+          'Developed design concepts and implementation details based on client requirements.'
         ],
         tabanlioglu: [
           'Provided support with AutoCAD drawings and 3D visualizations.',
-          'Contributed to international projects including DIFC 2.0 (Dubai), Neuwied (Germany), and Folkart Alacati.',
+          'Contributed to international projects including DIFC 2.0 (Dubai), Neuwied (Germany), and Folkart Alacati.'
         ],
         kavram: [
-          'Assisted with VAT refund reports and filing processes.',
+          'Assisted with VAT refund reports and filing processes.'
         ]
       }
-    },
-
-    // Portfolio Categories
-    portfolio_categories: {
-      design: '3D & Design',
-      software: 'Software & Web',
-      design_desc: 'Explore 3D modeling and design projects',
-      software_desc: 'View web development and software projects',
     },
 
     // Hero Section
@@ -223,14 +332,14 @@ export const translations = {
       greeting: 'Hello, I\'m',
       name: 'Deniz Barçak',
       description: 'I combine creative thinking and technical skills to develop productive solutions in both 3D modeling and software development. With a design-thinking approach, I bring projects together aesthetically, functionally, and technically as a whole. I am passionate about exploring new technologies and pushing boundaries in every project.',
-      download_cv: 'Download CV',
+      download_cv: 'Download CV'
     },
 
     // Skills Section
     skills: {
       title: 'Skills & Expertise',
       design_title: '3D & Design',
-      software_title: 'Software & Web',
+      software_title: 'Software & Web'
     },
 
     // About Section
@@ -249,7 +358,7 @@ export const translations = {
       drivers_license: 'Driver\'s License',
       drivers_license_value: 'Class A and B',
       education: 'Education',
-      scroll_down: 'Scroll Down',
+      scroll_down: 'Scroll Down'
     },
 
     // Education Section
@@ -257,19 +366,19 @@ export const translations = {
       ucuncu_binyil: {
         name: 'Üçüncü Binyıl Academy',
         program: 'Software Development',
-        period: 'Sep 2023 - Dec 2024',
+        period: 'Sep 2023 - Dec 2024'
       },
       halic: {
         name: 'Halic University',
         program: 'Interior Design',
-        period: '2018 - 2020',
+        period: '2018 - 2020'
       },
       ata: {
         name: 'Ata College',
         program: 'High School',
-        period: '2011 - 2014',
-      },
-    },
+        period: '2011 - 2014'
+      }
+    }
   },
 
   tr: {
@@ -284,39 +393,34 @@ export const translations = {
             description: 'Dinamik görsel anlatımı sergileyen video ve animasyon çalışmaları koleksiyonu.',
             gallery: [
               {
-                src: '/3D/staffs/1.jpg',
-                title: 'Video Projesi 1',
-                description: 'Dinamik görsel kompozisyon'
+                src: '/3D/staffs/video/4592-Crimson- 4592.jpg',
+                title: 'Crimson Tasarımı',
+                description: 'Modern kırmızı renk konsepti'
               },
               {
-                src: '/3D/staffs/2.jpg',
-                title: 'Video Projesi 2',
-                description: 'Animasyonlu sekans'
+                src: '/3D/staffs/video/4578-Retro Siyah- 4578.jpg',
+                title: 'Retro Siyah',
+                description: 'Klasik retro siyah stil'
               },
               {
-                src: '/3D/staffs/4.jpg',
-                title: 'Video Projesi 3',
-                description: 'Hareket grafikleri'
+                src: '/3D/staffs/video/4550-Bebek Mavi- 4550.jpg',
+                title: 'Bebek Mavisi',
+                description: 'Yumuşak bebek mavisi tasarım'
               },
               {
-                src: '/3D/staffs/Alltap.jpg',
-                title: 'Video Projesi 4',
-                description: 'Ürün görselleştirme'
+                src: '/3D/staffs/video/4524-Antik Pembe- 4524.jpg',
+                title: 'Antik Pembe',
+                description: 'Zarif antik pembe konsept'
               },
               {
-                src: '/3D/staffs/Bardaklık.jpg',
-                title: 'Video Projesi 5',
-                description: 'İç mekan tasarımı'
+                src: '/3D/staffs/video/4514-Başak- 4514.jpg',
+                title: 'Başak Tasarımı',
+                description: 'Doğal başak esinli tasarım'
               },
               {
-                src: '/3D/staffs/Kare1.jpg',
-                title: 'Video Projesi 6',
-                description: 'Mimari detay'
-              },
-              {
-                src: '/3D/staffs/Kare2.jpg',
-                title: 'Video Projesi 7',
-                description: 'Modern tasarım konsepti'
+                src: '/3D/staffs/video/4512-Kese Kağıdı- 4512.jpg',
+                title: 'Kese Kağıdı',
+                description: 'Çevre dostu kese kağıdı konsepti'
               }
             ]
           },
@@ -380,9 +484,6 @@ export const translations = {
           difc: {
             title: 'DIFC 2.0 Dubai',
             description: 'Dubai Uluslararası Finans Merkezi genişletme projesi, modern mimari tasarım ve yenilikçi alan çözümleri içerir.',
-            location: 'Dubai, BAE',
-            year: '2019',
-            category: 'Mimari Görselleştirme',
             gallery: [
               {
                 src: '/3D/DİFC/Kapak.jpg',
@@ -430,13 +531,24 @@ export const translations = {
       }
     },
 
+    // Portfolio Categories
+    portfolio_categories: {
+      design: '3D & Tasarım',
+      software: 'Yazılım & Web',
+      design_desc: '3D modelleme ve tasarım projelerini keşfedin',
+      software_desc: 'Web geliştirme ve yazılım projelerini görüntüleyin',
+      under_construction: {
+        status: 'Durum: Yapım Aşamasında 🚧'
+      }
+    },
+
     // Navigation
     nav: {
       home: 'Ana Sayfa',
       about: 'Hakkımda',
       portfolio: 'Portfolyo',
       resume: 'Özgeçmiş',
-      contact: 'İletişim',
+      contact: 'İletişim'
     },
 
     // Contact Page
@@ -460,33 +572,25 @@ export const translations = {
           'B2B kumaş tedarik platformunun frontend ve backend geliştirmesine katkıda bulundum.',
           'Go (Fiber), Next.js, React ve MongoDB teknolojilerini kullandım.',
           'Tedarikçiler ve mağazalar arasında sipariş yönetimi, ürün ve varyant sistemleri geliştirdim.',
-          'API entegrasyonları, kimlik doğrulama (JWT) ve yönetici paneli mimarisi tasarladım.',
+          'API entegrasyonları, kimlik doğrulama (JWT) ve yönetici paneli mimarisi tasarladım.'
         ],
         teampack: [
           'Çeşitli ürünler için özel ambalaj çözümleri, vakum formları ve renk kartları tasarladım.',
           'Fusion 360 kullanarak vakum kalıplarının 3D teknik modellemesini hazırladım.',
-          'Üretim süreci için 3D ürün görselleştirmeleri oluşturdum ve teknik destek sağladım.',
+          'Üretim süreci için 3D ürün görselleştirmeleri oluşturdum ve teknik destek sağladım.'
         ],
         atlas34: [
           'Konut ve villa projeleri için iç mimari tasarım, görselleştirme ve proje yönetimi yaptım.',
-          'Müşteri gereksinimlerine göre tasarım konseptleri ve uygulama detayları geliştirdim.',
+          'Müşteri gereksinimlerine göre tasarım konseptleri ve uygulama detayları geliştirdim.'
         ],
         tabanlioglu: [
           'AutoCAD çizimleri ve 3D görselleştirmeler konusunda destek sağladım.',
-          'DIFC 2.0 (Dubai), Neuwied (Almanya) ve Folkart Alaçatı dahil uluslararası projelere katkıda bulundum.',
+          'DIFC 2.0 (Dubai), Neuwied (Almanya) ve Folkart Alaçatı dahil uluslararası projelere katkıda bulundum.'
         ],
         kavram: [
-          'KDV iade raporları ve dosyalama süreçlerinde yardımcı oldum.',
+          'KDV iade raporları ve dosyalama süreçlerinde yardımcı oldum.'
         ]
       }
-    },
-
-    // Portfolio Categories
-    portfolio_categories: {
-      design: '3D & Tasarım',
-      software: 'Yazılım & Web',
-      design_desc: '3D modelleme ve tasarım projelerini keşfedin',
-      software_desc: 'Web geliştirme ve yazılım projelerini görüntüleyin',
     },
 
     // Hero Section
@@ -494,14 +598,14 @@ export const translations = {
       greeting: 'Merhaba, Ben',
       name: 'Deniz Barçak',
       description: 'Yaratıcı düşünme ve teknik becerileri birleştirerek hem 3D modelleme hem de yazılım geliştirme alanlarında üretken çözümler geliştiriyorum. Tasarım odaklı düşünme yaklaşımıyla projeleri estetik, işlevsel ve teknik olarak bir bütün haline getiriyorum. Yeni teknolojileri keşfetmeye ve her projede sınırları zorlamaya tutkuluyum.',
-      download_cv: 'CV İndir',
+      download_cv: 'CV İndir'
     },
 
     // Skills Section
     skills: {
       title: 'Yetenekler & Uzmanlık',
       design_title: '3D & Tasarım',
-      software_title: 'Yazılım & Web',
+      software_title: 'Yazılım & Web'
     },
 
     // About Section
@@ -520,7 +624,7 @@ export const translations = {
       drivers_license: 'Sürücü Belgesi',
       drivers_license_value: 'A ve B Sınıfı',
       education: 'Eğitim',
-      scroll_down: 'Aşağı Kaydır',
+      scroll_down: 'Aşağı Kaydır'
     },
 
     // Education Section
@@ -528,33 +632,27 @@ export const translations = {
       ucuncu_binyil: {
         name: 'Üçüncü Binyıl Akademi',
         program: 'Yazılım Geliştirme',
-        period: 'Eyl 2023 - Ara 2024',
+        period: 'Eyl 2023 - Ara 2024'
       },
       halic: {
         name: 'Haliç Üniversitesi',
         program: 'İç Mimarlık',
-        period: '2018 - 2020',
+        period: '2018 - 2020'
       },
       ata: {
         name: 'Ata Koleji',
         program: 'Lise',
-        period: '2011 - 2014',
-      },
-    },
-  },
-} as const;
-
-// Type-safe translation key helper
-export type TranslationKey = keyof typeof translations.en;
-
-// Helper function to get nested translation
-export function getTranslation(lang: Language, key: string): string {
-  const keys = key.split('.');
-  let value: any = translations[lang];
-  
-  for (const k of keys) {
-    value = value[k];
+        period: '2011 - 2014'
+      }
+    }
   }
-  
-  return value as string;
+};
+
+export function getTranslation(lang: Language, path: string): any {
+  try {
+    return path.split('.').reduce((obj: any, key: string) => obj?.[key], translations[lang]);
+  } catch (error) {
+    console.error('Translation error:', error);
+    return '';
+  }
 }
