@@ -102,6 +102,14 @@ export default function PortfolioDesign() {
   }, [videoGallery]);
   const jetkentGallery = getTranslation(language, 'portfolio.design.projects.jetkent.gallery') as unknown as GalleryImage[];
 
+  // Preload Jetkent images
+  useEffect(() => {
+    jetkentGallery.forEach((image) => {
+      const img = new window.Image();
+      img.src = image.src;
+    });
+  }, [jetkentGallery]);
+
   return (
     <main className="bg-primary relative min-h-screen overflow-hidden">
       <AnimatedBackground />
@@ -498,6 +506,9 @@ export default function PortfolioDesign() {
                   alt={jetkentGallery[selectedJetkentImage].title}
                   fill
                   className="object-contain bg-secondary/30"
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 1100px"
+                  quality={85}
                 />
 
                 {/* Navigation Arrows */}

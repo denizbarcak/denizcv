@@ -27,6 +27,9 @@ const HeroSection = () => {
                 fill
                 className="object-cover"
                 priority
+                loading="eager"
+                sizes="(max-width: 768px) 192px, 0px"
+                quality={90}
               />
             </div>
           </motion.div>
@@ -84,13 +87,16 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="hidden md:block relative w-[620px] h-[620px] ml-20"
           >
-            <Image
-              src="/images/photo/PRF_0450.webp"
-              alt="Deniz Barçak"
-              fill
-              className="object-cover object-[center_30%] rounded-full border-4 border-accent scale-[0.9]"
-              priority
-            />
+              <Image
+                src="/images/photo/PRF_0450.webp"
+                alt="Deniz Barçak"
+                fill
+                className="object-cover object-[center_30%] rounded-full border-4 border-accent scale-[0.9]"
+                priority
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 620px"
+                quality={90}
+              />
           </motion.div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: 'Deniz Barcak - Portfolio',
   description: 'Personal portfolio website of Deniz Barcak',
   icons: {
-    icon: '/images/Others/favicon.ico',
+    icon: '/images/Others/favicon_final.ico',
   },
 };
 
