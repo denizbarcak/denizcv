@@ -12,7 +12,7 @@ const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-center">
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="flex flex-col md:flex-row items-center gap-12 justify-between">
+        <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Profile Image - Shows at top on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl text-center md:text-left"
+            className="max-w-xl text-center md:text-left md:ml-24"
           >
             <motion.h1 
               className="text-5xl md:text-7xl font-bold mb-4 text-white"
@@ -82,7 +82,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="hidden md:block relative w-[620px] h-[620px] -ml-10"
+            className="hidden md:block relative w-[620px] h-[620px] ml-20"
           >
             <Image
               src="/images/photo/PRF_0450.webp"

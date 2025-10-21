@@ -144,7 +144,7 @@ export default function PortfolioDesign() {
               />
 
               {/* Navigation Arrows for Main Image */}
-              <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-between px-6">
                 <button
                     onClick={() => {
                       const newIndex = selectedDifcImage > 0 ? selectedDifcImage - 1 : difcGallery.length - 1;
@@ -291,7 +291,7 @@ export default function PortfolioDesign() {
                 />
 
                 {/* Navigation Arrows for Main Image */}
-                <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 flex items-center justify-between px-6">
                   <button
                     onClick={() => {
                       const newIndex = selectedVillaImage > 0 ? selectedVillaImage - 1 : villaGallery.length - 1;
@@ -501,7 +501,7 @@ export default function PortfolioDesign() {
                 />
 
                 {/* Navigation Arrows */}
-                <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 flex items-center justify-between px-6">
                   <button
                     onClick={() => setSelectedJetkentImage((prev) => (prev > 0 ? prev - 1 : jetkentGallery.length - 1))}
                     className="w-12 h-12 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm transform hover:scale-110"
