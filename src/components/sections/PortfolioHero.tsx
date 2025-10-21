@@ -8,8 +8,8 @@ const PortfolioHero = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="min-h-[30vh] relative flex items-center pt-24">
-      <div className="container mx-auto px-4 py-12">
+    <section className="min-h-[20vh] md:min-h-[40vh] relative flex items-center mb-2 md:mb-0">
+      <div className="container mx-auto px-4 pt-8 md:pt-0 relative z-10 pb-0">
         <motion.h1 
           className="text-5xl md:text-7xl font-bold text-white"
           initial={{ opacity: 0, y: 20 }}

@@ -28,16 +28,16 @@ const Biography = () => {
   ];
 
   return (
-    <section className="pt-12 pb-24">
-      <div className="container mx-auto px-4 relative">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+    <section className="pt-0 pb-8 md:pt-12 md:pb-24">
+      <div className="container mx-auto px-4 relative -mt-0 md:mt-0">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-12 items-start">
           {/* Left Column - Personal Information */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-1 md:space-y-6"
           >
             <h2 className="text-3xl font-bold text-white">
               {getTranslation(language, 'about.personal_info')}
@@ -139,9 +139,9 @@ const Biography = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-white">{getTranslation(language, 'about.education')}</h2>
-              <div className="space-y-4">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-white">{getTranslation(language, 'about.education')}</h2>
+                <div className="space-y-6">
                 {getEducation().map((edu, index) => (
                   <motion.div
                     key={edu.school}

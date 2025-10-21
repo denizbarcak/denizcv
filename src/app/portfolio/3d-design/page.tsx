@@ -8,9 +8,34 @@ import { useState, useEffect } from 'react';
 import AnimatedBackground from '@/components/layout/AnimatedBackground';
 import PortfolioHero from '../../../components/sections/PortfolioHero';
 
+// Custom hook for responsive design
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    function checkIsMobile() {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+    }
+    
+    // Initial check
+    checkIsMobile();
+    
+    // Add event listener for window resize
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    mediaQuery.addListener(checkIsMobile);
+    
+    // Cleanup
+    return () => mediaQuery.removeListener(checkIsMobile);
+  }, []);
+
+  return isMobile;
+}
+
 export default function PortfolioDesign() {
   const { language } = useLanguage();
+  const isMobile = useIsMobile();
   const [selectedDifcImage, setSelectedDifcImage] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [selectedVillaImage, setSelectedVillaImage] = useState(0);
   const [selectedVideoImage, setSelectedVideoImage] = useState(0);
   const [selectedJetkentImage, setSelectedJetkentImage] = useState(0);
@@ -34,9 +59,21 @@ export default function PortfolioDesign() {
     const container = document.querySelector('.difc-thumbnails');
     if (!container) return;
     
-    const thumbnailWidth = 192; // w-48 = 12rem = 192px
-    const gap = 16; // gap-4 = 1rem = 16px
-    const scrollPosition = index * (thumbnailWidth + gap) - (container.clientWidth - thumbnailWidth) / 2;
+    // Mobil ve desktop için farklı değerler
+    const isMobile = window.innerWidth < 768;
+    const thumbnailWidth = isMobile ? 80 : 192; // w-20 = 5rem = 80px for mobile, w-48 = 12rem = 192px for desktop
+    const gap = isMobile ? 8 : 16; // gap-2 = 0.5rem = 8px for mobile, gap-4 = 1rem = 16px for desktop
+    
+    // Container'ın görünür genişliği
+    const containerWidth = container.clientWidth;
+    // Tüm içeriğin genişliği
+    const totalWidth = container.scrollWidth;
+    
+    // Seçilen görselin ideal pozisyonu (merkeze gelecek şekilde)
+    let scrollPosition = index * (thumbnailWidth + gap) - (containerWidth - thumbnailWidth) / 2;
+    
+    // Başlangıç ve bitiş sınırlarını kontrol et
+    scrollPosition = Math.max(0, Math.min(scrollPosition, totalWidth - containerWidth));
     
     container.scrollTo({
       left: scrollPosition,
@@ -56,9 +93,20 @@ export default function PortfolioDesign() {
     const container = document.querySelector('.villa-thumbnails');
     if (!container) return;
     
-    const thumbnailWidth = 192; // w-48 = 12rem = 192px
-    const gap = 16; // gap-4 = 1rem = 16px
-    const scrollPosition = index * (thumbnailWidth + gap) - (container.clientWidth - thumbnailWidth) / 2;
+    // Mobil ve desktop için farklı değerler
+    const thumbnailWidth = isMobile ? 80 : 192; // w-20 = 5rem = 80px for mobile, w-48 = 12rem = 192px for desktop
+    const gap = isMobile ? 8 : 16; // gap-2 = 0.5rem = 8px for mobile, gap-4 = 1rem = 16px for desktop
+    
+    // Container'ın görünür genişliği
+    const containerWidth = container.clientWidth;
+    // Tüm içeriğin genişliği
+    const totalWidth = container.scrollWidth;
+    
+    // Seçilen görselin ideal pozisyonu (merkeze gelecek şekilde)
+    let scrollPosition = index * (thumbnailWidth + gap) - (containerWidth - thumbnailWidth) / 2;
+    
+    // Başlangıç ve bitiş sınırlarını kontrol et
+    scrollPosition = Math.max(0, Math.min(scrollPosition, totalWidth - containerWidth));
     
     container.scrollTo({
       left: scrollPosition,
@@ -119,8 +167,8 @@ export default function PortfolioDesign() {
         <PortfolioHero />
 
         {/* DIFC Project Section */}
-        <section className="py-8 px-4">
-          <div className="max-w-[1100px] mx-auto bg-secondary/30 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:bg-secondary/40 transition-all duration-500">
+        <section className="pt-4 pb-8 md:py-8 px-2">
+          <div className="max-w-[1200px] mx-auto bg-secondary/30 backdrop-blur-sm rounded-2xl p-4 md:p-8 hover:bg-secondary/40 transition-all duration-500">
             <div className="max-w-4xl mx-auto">
               {/* Project Header */}
               <motion.div
@@ -144,12 +192,24 @@ export default function PortfolioDesign() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative aspect-[16/9] rounded-xl overflow-hidden mb-8 group"
             >
-              <Image
-              src={difcGallery[selectedDifcImage].src}
-              alt={difcGallery[selectedDifcImage].title}
-                fill
-                className="object-contain bg-secondary/30"
-              />
+              <div 
+                onClick={() => isMobile && setIsFullscreen(true)}
+                className={`relative w-full h-full ${isMobile ? 'cursor-pointer' : ''}`}
+              >
+                <Image
+                  src={difcGallery[selectedDifcImage].src}
+                  alt={difcGallery[selectedDifcImage].title}
+                  fill
+                  className="object-contain bg-secondary/30"
+                />
+                {isMobile && (
+                  <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 4v3m4-3H7" />
+                    </svg>
+                  </div>
+                )}
+              </div>
 
               {/* Navigation Arrows for Main Image */}
               <div className="absolute inset-0 flex items-center justify-between px-6">
@@ -213,7 +273,7 @@ export default function PortfolioDesign() {
                         const container = document.querySelector('.overflow-x-auto');
                         if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
                       }}
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full hidden md:flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -224,14 +284,14 @@ export default function PortfolioDesign() {
                         const container = document.querySelector('.overflow-x-auto');
                         if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
                       }}
-                      className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                      className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full hidden md:flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
                   </div>
-                  <div className="flex gap-4 min-w-max px-12">
+                  <div className="flex gap-2 md:gap-4 min-w-max px-12">
                     {difcGallery.map((image: any, index: number) => (
                       <button
                         key={index}
@@ -239,7 +299,7 @@ export default function PortfolioDesign() {
                             setSelectedDifcImage(index);
                             scrollToSelectedDifcImage(index);
                           }}
-                        className={`relative w-48 aspect-[16/9] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
+                        className={`relative w-20 md:w-48 aspect-[16/9] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
                           selectedDifcImage === index ? 'ring-2 ring-accent scale-[0.98]' : 'hover:scale-[0.98]'
                         }`}
                       >
@@ -285,18 +345,30 @@ export default function PortfolioDesign() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative aspect-[16/9] rounded-xl overflow-hidden mb-8 group"
               >
-                <Image
-                  src={villaGallery[selectedVillaImage].src}
-                  alt={villaGallery[selectedVillaImage].title}
-                  fill
-                  className={`${
-                    villaGallery[selectedVillaImage].src.includes('MİMARİ PROJESl.png')
-                      ? 'object-contain scale-150 bg-secondary/30'
-                      : villaGallery[selectedVillaImage].src.includes('Plan-1.png')
-                      ? 'object-contain bg-secondary/30 rotate-90 scale-[1.35]'
-                      : 'object-contain bg-secondary/30'
-                  }`}
-                />
+                <div 
+                  onClick={() => isMobile && setIsFullscreen(true)}
+                  className={`relative w-full h-full ${isMobile ? 'cursor-pointer' : ''}`}
+                >
+                  <Image
+                    src={villaGallery[selectedVillaImage].src}
+                    alt={villaGallery[selectedVillaImage].title}
+                    fill
+                    className={`${
+                      villaGallery[selectedVillaImage].src.includes('MİMARİ PROJESl.png')
+                        ? 'object-contain scale-150 bg-secondary/30'
+                        : villaGallery[selectedVillaImage].src.includes('Plan-1.png')
+                        ? 'object-contain bg-secondary/30 rotate-90 scale-[1.35]'
+                        : 'object-contain bg-secondary/30'
+                    }`}
+                  />
+                  {isMobile && (
+                    <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 4v3m4-3H7" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
 
                 {/* Navigation Arrows for Main Image */}
                 <div className="absolute inset-0 flex items-center justify-between px-6">
@@ -355,7 +427,7 @@ export default function PortfolioDesign() {
                           const container = document.querySelector('.villa-thumbnails');
                           if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
                         }}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full hidden md:flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -366,14 +438,14 @@ export default function PortfolioDesign() {
                           const container = document.querySelector('.villa-thumbnails');
                           if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
                         }}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full hidden md:flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
                     </div>
-                    <div className="flex gap-4 min-w-max px-12">
+                    <div className="flex gap-2 md:gap-4 min-w-max px-12">
                       {villaGallery.map((image: any, index: number) => (
                         <button
                           key={index}
@@ -381,7 +453,7 @@ export default function PortfolioDesign() {
                             setSelectedVillaImage(index);
                             scrollToSelectedVillaImage(index);
                           }}
-                          className={`relative w-48 aspect-[16/9] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
+                          className={`relative w-20 md:w-48 aspect-[16/9] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
                             selectedVillaImage === index ? 'ring-2 ring-accent scale-[0.98]' : 'hover:scale-[0.98]'
                           }`}
                         >
@@ -550,6 +622,80 @@ export default function PortfolioDesign() {
           </div>
         </section>
       </div>
+
+      {/* Fullscreen Modal - Only for Mobile */}
+      <AnimatePresence>
+        {isFullscreen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="md:hidden fixed inset-0 z-50 bg-black flex items-center justify-center"
+            onClick={() => setIsFullscreen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-screen h-screen"
+              onClick={e => e.stopPropagation()}
+            >
+              <Image
+                src={difcGallery[selectedDifcImage].src}
+                alt={difcGallery[selectedDifcImage].title}
+                fill
+                className="object-contain"
+                sizes="100vw"
+                priority
+                quality={100}
+              />
+              
+              {/* Close Button */}
+              <button
+                onClick={() => setIsFullscreen(false)}
+                className="absolute top-4 right-4 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {/* Navigation Arrows */}
+              <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 flex justify-between">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const newIndex = selectedDifcImage > 0 ? selectedDifcImage - 1 : difcGallery.length - 1;
+                    setSelectedDifcImage(newIndex);
+                  }}
+                  className="w-12 h-12 bg-black/50 text-white rounded-full flex items-center justify-center"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const newIndex = selectedDifcImage < difcGallery.length - 1 ? selectedDifcImage + 1 : 0;
+                    setSelectedDifcImage(newIndex);
+                  }}
+                  className="w-12 h-12 bg-black/50 text-white rounded-full flex items-center justify-center"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Image Counter */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                {selectedDifcImage + 1} / {difcGallery.length}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
