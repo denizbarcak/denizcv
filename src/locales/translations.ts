@@ -123,8 +123,8 @@ export const translations: TranslationsType = {
         view_project: 'View Project',
         projects: {
           video_project: {
-            title: 'Video & Animation Projects',
-            description: 'A collection of video and animation works showcasing dynamic visual storytelling.',
+            title: 'Product Design & Color Studies',
+            description: '',
             gallery: [
               {
                 src: '/3D/staffs/video/4592-Crimson- 4592.jpg',
@@ -389,8 +389,8 @@ export const translations: TranslationsType = {
         view_project: 'Projeyi Görüntüle',
         projects: {
           video_project: {
-            title: 'Video & Animasyon Projeleri',
-            description: 'Dinamik görsel anlatımı sergileyen video ve animasyon çalışmaları koleksiyonu.',
+            title: 'Ürün Tasarımı & Renk Çalışmaları',
+            description: '',
             gallery: [
               {
                 src: '/3D/staffs/video/4592-Crimson- 4592.jpg',
