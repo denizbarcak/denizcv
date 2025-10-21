@@ -127,32 +127,32 @@ export const translations: TranslationsType = {
             description: '',
             gallery: [
               {
-                src: '/3D/Staffs/video/6crimson.jpg',
+                src: '/3D/Staffs/video/6crimson.webp',
                 title: 'Crimson Design',
                 description: 'Modern crimson color concept'
               },
               {
-                src: '/3D/Staffs/video/5RetroSiyah.jpg',
+                src: '/3D/Staffs/video/5RetroSiyah.webp',
                 title: 'Retro Black',
                 description: 'Classic retro black style'
               },
               {
-                src: '/3D/Staffs/video/4BebekMavi.jpg',
+                src: '/3D/Staffs/video/4BebekMavi.webp',
                 title: 'Baby Blue',
                 description: 'Soft baby blue design'
               },
               {
-                src: '/3D/Staffs/video/3AntikPembe.jpg',
+                src: '/3D/Staffs/video/3AntikPembe.webp',
                 title: 'Antique Pink',
                 description: 'Elegant antique pink concept'
               },
               {
-                src: '/3D/Staffs/video/2Basak.jpg',
+                src: '/3D/Staffs/video/2Basak.webp',
                 title: 'Başak Design',
                 description: 'Natural wheat-inspired design'
               },
               {
-                src: '/3D/Staffs/video/1kesekagidi.jpg',
+                src: '/3D/Staffs/video/1kesekagidi.webp',
                 title: 'Kraft Paper',
                 description: 'Eco-friendly kraft paper concept'
               }
@@ -163,32 +163,32 @@ export const translations: TranslationsType = {
             description: 'Modern villa project featuring contemporary architecture with pool and landscape design.',
             gallery: [
               {
-                src: '/3D/Silivri villa/1.jpg',
+                src: '/3D/Silivri villa/1.webp',
                 title: 'Front View',
                 description: 'Main entrance and front facade of the villa'
               },
               {
-                src: '/3D/Silivri villa/4.jpg',
+                src: '/3D/Silivri villa/4.webp',
                 title: 'Pool Area',
                 description: 'Swimming pool and outdoor living space'
               },
               {
-                src: '/3D/Silivri villa/Havuz cephe.jpg',
+                src: '/3D/Silivri villa/Havuz cephe.webp',
                 title: 'Pool Facade',
                 description: 'View from the pool area showing the villa facade'
               },
               {
-                src: '/3D/Silivri villa/Ön çephe.jpg',
+                src: '/3D/Silivri villa/Ön çephe.webp',
                 title: 'Front Facade',
                 description: 'Detailed view of the front facade architecture'
               },
               {
-                src: '/3D/Silivri villa/Plan-1.png',
+                src: '/3D/Silivri villa/Plan-1.webp',
                 title: 'Floor Plan',
                 description: 'Architectural floor plan of the villa'
               },
               {
-                src: '/3D/Silivri villa/MİMARİ PROJESl.png',
+                src: '/3D/Silivri villa/MİMARİ PROJESl.webp',
                 title: 'Architectural Project',
                 description: 'Complete architectural project overview'
               }
@@ -199,17 +199,17 @@ export const translations: TranslationsType = {
             description: 'Modern residential project featuring contemporary architecture and sustainable design solutions.',
             gallery: [
               {
-                src: '/3D/Jetkent/m1.jpg',
+                src: '/3D/Jetkent/m1.webp',
                 title: 'Main View',
                 description: 'Main perspective of the residential complex'
               },
               {
-                src: '/3D/Jetkent/m2.jpg',
+                src: '/3D/Jetkent/m2.webp',
                 title: 'Side View',
                 description: 'Side perspective showing architectural details'
               },
               {
-                src: '/3D/Jetkent/3.jpg',
+                src: '/3D/Jetkent/3.webp',
                 title: 'Aerial View',
                 description: 'Bird\'s eye view of the entire complex'
               }
@@ -220,42 +220,42 @@ export const translations: TranslationsType = {
             description: 'Dubai International Financial Centre expansion project featuring modern architectural design and innovative space solutions.',
             gallery: [
               {
-                src: '/3D/DIFC/Difc1.jpg',
+                src: '/3D/DIFC/Difc1.webp',
                 title: 'Main Entrance View',
                 description: 'The grand entrance featuring modern architecture with palm trees and glass facades'
               },
               {
-                src: '/3D/DIFC/Difc2.jpg',
+                src: '/3D/DIFC/Difc2.webp',
                 title: 'Exterior View',
                 description: 'Exterior perspective showing the building\'s distinctive architectural elements'
               },
               {
-                src: '/3D/DIFC/Difc3.jpg',
+                src: '/3D/DIFC/Difc3.webp',
                 title: 'Night View',
                 description: 'Evening perspective highlighting the building\'s illumination'
               },
               {
-                src: '/3D/DIFC/Difc4.jpg',
+                src: '/3D/DIFC/Difc4.webp',
                 title: 'Interior Court',
                 description: 'Internal courtyard with natural lighting and vegetation'
               },
               {
-                src: '/3D/DIFC/Difc5.jpg',
+                src: '/3D/DIFC/Difc5.webp',
                 title: 'Aerial View',
                 description: 'Bird\'s eye view of the complex showing the overall layout'
               },
               {
-                src: '/3D/DIFC/Difc6.jpg',
+                src: '/3D/DIFC/Difc6.webp',
                 title: 'Plaza Detail',
                 description: 'Detailed view of the plaza showing architectural elements'
               },
               {
-                src: '/3D/DIFC/Difc7.jpg',
+                src: '/3D/DIFC/Difc7.webp',
                 title: 'Facade Detail',
                 description: 'Close-up view of the building\'s facade patterns'
               },
               {
-                src: '/3D/DIFC/Difc8.jpg',
+                src: '/3D/DIFC/Difc8.webp',
                 title: 'Courtyard View',
                 description: 'Internal courtyard showing the integration of nature and architecture'
               }
@@ -393,32 +393,32 @@ export const translations: TranslationsType = {
             description: '',
             gallery: [
               {
-                src: '/3D/Staffs/video/6crimson.jpg',
+                src: '/3D/Staffs/video/6crimson.webp',
                 title: 'Crimson Tasarımı',
                 description: 'Modern kırmızı renk konsepti'
               },
               {
-                src: '/3D/Staffs/video/5RetroSiyah.jpg',
+                src: '/3D/Staffs/video/5RetroSiyah.webp',
                 title: 'Retro Siyah',
                 description: 'Klasik retro siyah stil'
               },
               {
-                src: '/3D/Staffs/video/4BebekMavi.jpg',
+                src: '/3D/Staffs/video/4BebekMavi.webp',
                 title: 'Bebek Mavisi',
                 description: 'Yumuşak bebek mavisi tasarım'
               },
               {
-                src: '/3D/Staffs/video/3AntikPembe.jpg',
+                src: '/3D/Staffs/video/3AntikPembe.webp',
                 title: 'Antik Pembe',
                 description: 'Zarif antik pembe konsept'
               },
               {
-                src: '/3D/Staffs/video/2Basak.jpg',
+                src: '/3D/Staffs/video/2Basak.webp',
                 title: 'Başak Tasarımı',
                 description: 'Doğal başak esinli tasarım'
               },
               {
-                src: '/3D/Staffs/video/1kesekagidi.jpg',
+                src: '/3D/Staffs/video/1kesekagidi.webp',
                 title: 'Kese Kağıdı',
                 description: 'Çevre dostu kese kağıdı konsepti'
               }
@@ -429,32 +429,32 @@ export const translations: TranslationsType = {
             description: 'Havuz ve peyzaj tasarımı ile modern mimari özellikler taşıyan villa projesi.',
             gallery: [
               {
-                src: '/3D/Silivri villa/1.jpg',
+                src: '/3D/Silivri villa/1.webp',
                 title: 'Ön Görünüm',
                 description: 'Villanın ana girişi ve ön cephesi'
               },
               {
-                src: '/3D/Silivri villa/4.jpg',
+                src: '/3D/Silivri villa/4.webp',
                 title: 'Havuz Alanı',
                 description: 'Yüzme havuzu ve dış yaşam alanı'
               },
               {
-                src: '/3D/Silivri villa/Havuz cephe.jpg',
+                src: '/3D/Silivri villa/Havuz cephe.webp',
                 title: 'Havuz Cephesi',
                 description: 'Havuz alanından villa cephesi görünümü'
               },
               {
-                src: '/3D/Silivri villa/Ön çephe.jpg',
+                src: '/3D/Silivri villa/Ön çephe.webp',
                 title: 'Ön Cephe',
                 description: 'Ön cephe mimarisinin detaylı görünümü'
               },
               {
-                src: '/3D/Silivri villa/Plan-1.png',
+                src: '/3D/Silivri villa/Plan-1.webp',
                 title: 'Kat Planı',
                 description: 'Villanın mimari kat planı'
               },
               {
-                src: '/3D/Silivri villa/MİMARİ PROJESl.png',
+                src: '/3D/Silivri villa/MİMARİ PROJESl.webp',
                 title: 'Mimari Proje',
                 description: 'Tüm mimari proje genel görünümü'
               }
@@ -465,17 +465,17 @@ export const translations: TranslationsType = {
             description: 'Modern mimari ve sürdürülebilir tasarım çözümleri içeren çağdaş konut projesi.',
             gallery: [
               {
-                src: '/3D/Jetkent/m1.jpg',
+                src: '/3D/Jetkent/m1.webp',
                 title: 'Ana Görünüm',
                 description: 'Konut kompleksinin ana perspektifi'
               },
               {
-                src: '/3D/Jetkent/m2.jpg',
+                src: '/3D/Jetkent/m2.webp',
                 title: 'Yan Görünüm',
                 description: 'Mimari detayları gösteren yan perspektif'
               },
               {
-                src: '/3D/Jetkent/3.jpg',
+                src: '/3D/Jetkent/3.webp',
                 title: 'Kuş Bakışı Görünüm',
                 description: 'Tüm kompleksin havadan görünümü'
               }
@@ -486,42 +486,42 @@ export const translations: TranslationsType = {
             description: 'Dubai Uluslararası Finans Merkezi genişletme projesi, modern mimari tasarım ve yenilikçi alan çözümleri içerir.',
             gallery: [
               {
-                src: '/3D/DIFC/Difc1.jpg',
+                src: '/3D/DIFC/Difc1.webp',
                 title: 'Ana Giriş Görünümü',
                 description: 'Palmiye ağaçları ve cam cephelerle modern mimariye sahip görkemli giriş'
               },
               {
-                src: '/3D/DIFC/Difc2.jpg',
+                src: '/3D/DIFC/Difc2.webp',
                 title: 'Dış Görünüm',
                 description: 'Binanın karakteristik mimari öğelerini gösteren dış perspektif'
               },
               {
-                src: '/3D/DIFC/Difc3.jpg',
+                src: '/3D/DIFC/Difc3.webp',
                 title: 'Gece Görünümü',
                 description: 'Binanın aydınlatmasını vurgulayan akşam perspektifi'
               },
               {
-                src: '/3D/DIFC/Difc4.jpg',
+                src: '/3D/DIFC/Difc4.webp',
                 title: 'İç Avlu',
                 description: 'Doğal aydınlatma ve bitkilendirmeye sahip iç avlu'
               },
               {
-                src: '/3D/DIFC/Difc5.jpg',
+                src: '/3D/DIFC/Difc5.webp',
                 title: 'Kuş Bakışı Görünüm',
                 description: 'Kompleksin genel yerleşimini gösteren havadan görünüm'
               },
               {
-                src: '/3D/DIFC/Difc6.jpg',
+                src: '/3D/DIFC/Difc6.webp',
                 title: 'Plaza Detayı',
                 description: 'Plazanın mimari öğelerini gösteren detaylı görünüm'
               },
               {
-                src: '/3D/DIFC/Difc7.jpg',
+                src: '/3D/DIFC/Difc7.webp',
                 title: 'Cephe Detayı',
                 description: 'Bina cephe desenlerinin yakın görünümü'
               },
               {
-                src: '/3D/DIFC/Difc8.jpg',
+                src: '/3D/DIFC/Difc8.webp',
                 title: 'Avlu Görünümü',
                 description: 'Doğa ve mimarinin bütünleşmesini gösteren iç avlu'
               }
