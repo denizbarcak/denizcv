@@ -92,6 +92,14 @@ export default function PortfolioDesign() {
   const difcGallery = getTranslation(language, 'portfolio.design.projects.difc.gallery') as unknown as GalleryImage[];
   const villaGallery = getTranslation(language, 'portfolio.design.projects.silivri_villa.gallery') as unknown as GalleryImage[];
   const videoGallery = getTranslation(language, 'portfolio.design.projects.video_project.gallery') as unknown as GalleryImage[];
+
+  // Preload video gallery images
+  useEffect(() => {
+    videoGallery.forEach((image) => {
+      const img = new window.Image();
+      img.src = image.src;
+    });
+  }, [videoGallery]);
   const jetkentGallery = getTranslation(language, 'portfolio.design.projects.jetkent.gallery') as unknown as GalleryImage[];
 
   return (
@@ -426,6 +434,7 @@ export default function PortfolioDesign() {
                       src={videoGallery[selectedVideoImage].src}
                       alt={videoGallery[selectedVideoImage].title}
                       fill
+                      priority
                       className="object-cover bg-secondary/30"
                     />
                   </motion.div>
