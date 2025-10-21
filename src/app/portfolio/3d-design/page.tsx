@@ -21,12 +21,12 @@ export default function PortfolioDesign() {
 
   // Color mapping for buttons
   const colorMap: { [key: string]: string } = {
-    'Crimson': 'bg-[#B11B15]',
-    'Retro Siyah': 'bg-[#584D47]',
-    'Bebek Mavi': 'bg-[#AEC0D3]',
-    'Antik Pembe': 'bg-[#D66264]',
-    'Başak': 'bg-[#E3DB38]',
-    'Kese Kağıdı': 'bg-[#C3B497]'
+    '6crimson': 'bg-[#B11B15]',
+    '5RetroSiyah': 'bg-[#584D47]',
+    '4BebekMavi': 'bg-[#AEC0D3]',
+    '3AntikPembe': 'bg-[#D66264]',
+    '2Basak': 'bg-[#E3DB38]',
+    '1kesekagidi': 'bg-[#C3B497]'
   };
 
   // Scroll to selected image in thumbnail carousel
@@ -436,7 +436,7 @@ export default function PortfolioDesign() {
                   {videoGallery.map((image, index) => {
                     console.log('Image title:', image.title);
                     // Extract color name from file path instead of title
-                    const colorName = image.src.split('/').pop()?.split('-')[1]?.trim() || '';
+                    const colorName = image.src.split('/').pop()?.split('.')[0] || '';
                     console.log('Color name:', colorName, 'Color class:', colorMap[colorName]);
                     return (
                       <button

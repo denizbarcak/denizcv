@@ -127,32 +127,32 @@ export const translations: TranslationsType = {
             description: '',
             gallery: [
               {
-                src: '/3D/staffs/video/4592-Crimson- 4592.jpg',
+                src: '/3D/Staffs/video/6crimson.jpg',
                 title: 'Crimson Design',
                 description: 'Modern crimson color concept'
               },
               {
-                src: '/3D/staffs/video/4578-Retro Siyah- 4578.jpg',
+                src: '/3D/Staffs/video/5RetroSiyah.jpg',
                 title: 'Retro Black',
                 description: 'Classic retro black style'
               },
               {
-                src: '/3D/staffs/video/4550-Bebek Mavi- 4550.jpg',
+                src: '/3D/Staffs/video/4BebekMavi.jpg',
                 title: 'Baby Blue',
                 description: 'Soft baby blue design'
               },
               {
-                src: '/3D/staffs/video/4524-Antik Pembe- 4524.jpg',
+                src: '/3D/Staffs/video/3AntikPembe.jpg',
                 title: 'Antique Pink',
                 description: 'Elegant antique pink concept'
               },
               {
-                src: '/3D/staffs/video/4514-Başak- 4514.jpg',
+                src: '/3D/Staffs/video/2Basak.jpg',
                 title: 'Başak Design',
                 description: 'Natural wheat-inspired design'
               },
               {
-                src: '/3D/staffs/video/4512-Kese Kağıdı- 4512.jpg',
+                src: '/3D/Staffs/video/1kesekagidi.jpg',
                 title: 'Kraft Paper',
                 description: 'Eco-friendly kraft paper concept'
               }
@@ -220,42 +220,42 @@ export const translations: TranslationsType = {
             description: 'Dubai International Financial Centre expansion project featuring modern architectural design and innovative space solutions.',
             gallery: [
               {
-                src: '/3D/DİFC/Kapak.jpg',
+                src: '/3D/DIFC/Difc1.jpg',
                 title: 'Main Entrance View',
                 description: 'The grand entrance featuring modern architecture with palm trees and glass facades'
               },
               {
-                src: '/3D/DİFC/470_DIFC_2.jpg',
+                src: '/3D/DIFC/Difc2.jpg',
                 title: 'Exterior View',
                 description: 'Exterior perspective showing the building\'s distinctive architectural elements'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215850.jpg',
+                src: '/3D/DIFC/Difc3.jpg',
                 title: 'Night View',
                 description: 'Evening perspective highlighting the building\'s illumination'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215952.jpg',
+                src: '/3D/DIFC/Difc4.jpg',
                 title: 'Interior Court',
                 description: 'Internal courtyard with natural lighting and vegetation'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220329.jpg',
+                src: '/3D/DIFC/Difc5.jpg',
                 title: 'Aerial View',
                 description: 'Bird\'s eye view of the complex showing the overall layout'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220502.jpg',
+                src: '/3D/DIFC/Difc6.jpg',
                 title: 'Plaza Detail',
                 description: 'Detailed view of the plaza showing architectural elements'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221509.jpg',
+                src: '/3D/DIFC/Difc7.jpg',
                 title: 'Facade Detail',
                 description: 'Close-up view of the building\'s facade patterns'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221700.jpg',
+                src: '/3D/DIFC/Difc8.jpg',
                 title: 'Courtyard View',
                 description: 'Internal courtyard showing the integration of nature and architecture'
               }
@@ -393,32 +393,32 @@ export const translations: TranslationsType = {
             description: '',
             gallery: [
               {
-                src: '/3D/staffs/video/4592-Crimson- 4592.jpg',
+                src: '/3D/Staffs/video/6crimson.jpg',
                 title: 'Crimson Tasarımı',
                 description: 'Modern kırmızı renk konsepti'
               },
               {
-                src: '/3D/staffs/video/4578-Retro Siyah- 4578.jpg',
+                src: '/3D/Staffs/video/5RetroSiyah.jpg',
                 title: 'Retro Siyah',
                 description: 'Klasik retro siyah stil'
               },
               {
-                src: '/3D/staffs/video/4550-Bebek Mavi- 4550.jpg',
+                src: '/3D/Staffs/video/4BebekMavi.jpg',
                 title: 'Bebek Mavisi',
                 description: 'Yumuşak bebek mavisi tasarım'
               },
               {
-                src: '/3D/staffs/video/4524-Antik Pembe- 4524.jpg',
+                src: '/3D/Staffs/video/3AntikPembe.jpg',
                 title: 'Antik Pembe',
                 description: 'Zarif antik pembe konsept'
               },
               {
-                src: '/3D/staffs/video/4514-Başak- 4514.jpg',
+                src: '/3D/Staffs/video/2Basak.jpg',
                 title: 'Başak Tasarımı',
                 description: 'Doğal başak esinli tasarım'
               },
               {
-                src: '/3D/staffs/video/4512-Kese Kağıdı- 4512.jpg',
+                src: '/3D/Staffs/video/1kesekagidi.jpg',
                 title: 'Kese Kağıdı',
                 description: 'Çevre dostu kese kağıdı konsepti'
               }
@@ -486,42 +486,42 @@ export const translations: TranslationsType = {
             description: 'Dubai Uluslararası Finans Merkezi genişletme projesi, modern mimari tasarım ve yenilikçi alan çözümleri içerir.',
             gallery: [
               {
-                src: '/3D/DİFC/Kapak.jpg',
+                src: '/3D/DIFC/Difc1.jpg',
                 title: 'Ana Giriş Görünümü',
                 description: 'Palmiye ağaçları ve cam cephelerle modern mimariye sahip görkemli giriş'
               },
               {
-                src: '/3D/DİFC/470_DIFC_2.jpg',
+                src: '/3D/DIFC/Difc2.jpg',
                 title: 'Dış Görünüm',
                 description: 'Binanın karakteristik mimari öğelerini gösteren dış perspektif'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215850.jpg',
+                src: '/3D/DIFC/Difc3.jpg',
                 title: 'Gece Görünümü',
                 description: 'Binanın aydınlatmasını vurgulayan akşam perspektifi'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 215952.jpg',
+                src: '/3D/DIFC/Difc4.jpg',
                 title: 'İç Avlu',
                 description: 'Doğal aydınlatma ve bitkilendirmeye sahip iç avlu'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220329.jpg',
+                src: '/3D/DIFC/Difc5.jpg',
                 title: 'Kuş Bakışı Görünüm',
                 description: 'Kompleksin genel yerleşimini gösteren havadan görünüm'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 220502.jpg',
+                src: '/3D/DIFC/Difc6.jpg',
                 title: 'Plaza Detayı',
                 description: 'Plazanın mimari öğelerini gösteren detaylı görünüm'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221509.jpg',
+                src: '/3D/DIFC/Difc7.jpg',
                 title: 'Cephe Detayı',
                 description: 'Bina cephe desenlerinin yakın görünümü'
               },
               {
-                src: '/3D/DİFC/Ekran görüntüsü 2022-08-10 221700.jpg',
+                src: '/3D/DIFC/Difc8.jpg',
                 title: 'Avlu Görünümü',
                 description: 'Doğa ve mimarinin bütünleşmesini gösteren iç avlu'
               }

@@ -97,7 +97,7 @@ const Experience = () => {
                   
                   {exp.achievements.length > 0 && (
                     <ul className="mt-4 space-y-2">
-                      {exp.achievements.map((achievement, i) => (
+                      {exp.achievements.map((achievement: string, i: number) => (
                         <li key={i} className="text-gray-300 flex items-start">
                           <span className="text-accent mr-2 mt-1.5">•</span>
                           <span>{achievement}</span>
