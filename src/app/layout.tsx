@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Deniz Barcak - Portfolio',
   description: 'Personal portfolio website of Deniz Barcak',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
