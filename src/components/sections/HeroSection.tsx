@@ -22,7 +22,7 @@ const HeroSection = () => {
           >
             <div className="w-full h-full rounded-full border-4 border-accent overflow-hidden relative">
               <Image
-                src="/images/photo/profilerenkli.png"
+                src="/images/photo/PRF_0450.webp"
                 alt="Deniz Barçak"
                 fill
                 className="object-cover"
@@ -82,13 +82,13 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="hidden md:block relative w-[480px] h-[480px]"
+            className="hidden md:block relative w-[620px] h-[620px] -ml-10"
           >
             <Image
-              src="/images/photo/profilerenkli.png"
+              src="/images/photo/PRF_0450.webp"
               alt="Deniz Barçak"
               fill
-              className="object-cover rounded-full border-4 border-accent"
+              className="object-cover object-[center_30%] rounded-full border-4 border-accent scale-[0.9]"
               priority
             />
           </motion.div>
