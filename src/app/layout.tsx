@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Deniz Barcak - Portfolio',
   description: 'Personal portfolio website of Deniz Barcak',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/images/Others/favicon.ico',
   },
 };
 
