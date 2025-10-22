@@ -11,14 +11,14 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center">
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="flex flex-col md:flex-row items-center gap-12">
+      <div className="container mx-auto px-4 pt-16 pb-16 md:pt-2 md:pb-14 lg:py-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8">
           {/* Profile Image - Shows at top on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="md:hidden w-48 h-48 relative mb-4"
+            className="lg:hidden w-48 h-48 md:w-60 md:h-60 relative mb-4 md:mb-2"
           >
             <div className="w-full h-full rounded-full border-4 border-accent overflow-hidden relative">
               <Image
@@ -28,7 +28,7 @@ const HeroSection = () => {
                 className="object-cover"
                 priority
                 loading="eager"
-                sizes="(max-width: 768px) 192px, 0px"
+                sizes="(max-width: 768px) 192px, (max-width: 1024px) 240px, 0px"
                 quality={90}
               />
             </div>
@@ -39,7 +39,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl text-center md:text-left md:ml-24"
+            className="max-w-xl text-center lg:text-left lg:ml-24"
           >
             <motion.h1 
               className="text-5xl md:text-7xl font-bold mb-4 text-white"
@@ -85,7 +85,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="hidden md:block relative w-[620px] h-[620px] ml-20"
+            className="hidden lg:block relative w-[620px] h-[620px] lg:ml-20"
           >
               <Image
                 src="/images/photo/PRF_0450.webp"
