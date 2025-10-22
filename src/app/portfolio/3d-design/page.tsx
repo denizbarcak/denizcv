@@ -68,12 +68,13 @@ export default function PortfolioDesign() {
     const container = document.querySelector('.villa-thumbnails');
     if (!container) return;
     
-    const thumbnailWidth = 192; // w-48 = 12rem = 192px
+    const isMobile = window.innerWidth < 768; // md breakpoint
+    const thumbnailWidth = isMobile ? 96 : 192; // w-24 = 6rem = 96px for mobile, w-48 = 12rem = 192px for desktop
     const gap = 16; // gap-4 = 1rem = 16px
     const scrollPosition = index * (thumbnailWidth + gap) - (container.clientWidth - thumbnailWidth) / 2;
     
     container.scrollTo({
-      left: scrollPosition,
+      left: Math.max(0, scrollPosition),
       behavior: 'smooth'
     });
   };
@@ -358,34 +359,10 @@ export default function PortfolioDesign() {
                     />
                   </div>
                   <div 
-                    className="overflow-x-auto pb-2 hide-scrollbar villa-thumbnails"
+                    className="overflow-x-auto pb-2 hide-scrollbar villa-thumbnails snap-x snap-mandatory"
                     onScroll={handleVillaScroll}
                   >
-                    <div className="absolute -left-5 -right-5 top-0 bottom-0 pointer-events-none">
-                      <button
-                        onClick={() => {
-                          const container = document.querySelector('.villa-thumbnails');
-                          if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
-                        }}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => {
-                          const container = document.querySelector('.villa-thumbnails');
-                          if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
-                        }}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-accent/10 hover:bg-accent/20 text-accent rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-sm pointer-events-auto"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                    </div>
-                    <div className="flex gap-4 min-w-max px-12">
+                    <div className="flex gap-4 min-w-max px-4 md:px-12">
                       {villaGallery.map((image: any, index: number) => (
                         <button
                           key={index}
@@ -393,7 +370,7 @@ export default function PortfolioDesign() {
                             setSelectedVillaImage(index);
                             scrollToSelectedVillaImage(index);
                           }}
-                          className={`relative w-48 aspect-[16/9] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
+                          className={`relative w-24 md:w-48 aspect-[16/9] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 snap-center ${
                             selectedVillaImage === index ? 'ring-2 ring-accent scale-[0.98]' : 'hover:scale-[0.98]'
                           }`}
                         >
@@ -435,38 +412,56 @@ export default function PortfolioDesign() {
               </motion.div>
 
               {/* Main Image */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative aspect-[16/9] rounded-xl overflow-hidden mb-8 group"
-              >
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selectedVideoImage}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="absolute inset-0"
-                  >
-                    <Image
-                      src={videoGallery[selectedVideoImage].src}
-                      alt={videoGallery[selectedVideoImage].title}
-                      fill
-                      priority
-                      className="object-cover bg-secondary/30"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+              <div className="flex flex-col">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="relative aspect-[16/9] rounded-xl overflow-hidden group"
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedVideoImage}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.1, ease: "easeOut" }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={videoGallery[selectedVideoImage].src}
+                        alt={videoGallery[selectedVideoImage].title}
+                        fill
+                        priority
+                        className="object-cover bg-secondary/30"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
 
-                {/* Color Selection Buttons */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-black/20 backdrop-blur-sm px-4 py-3 rounded-full">
+                  {/* Color Selection Buttons - Desktop */}
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-3 bg-black/20 backdrop-blur-sm px-4 py-3 rounded-full">
+                    {videoGallery.map((image, index) => {
+                      const colorName = image.src.split('/').pop()?.split('.')[0] || '';
+                      return (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedVideoImage(index)}
+                          className={`w-6 h-6 rounded-full transition-all duration-300 ${colorMap[colorName]} 
+                            ${selectedVideoImage === index 
+                              ? 'scale-125 ring-2 ring-white ring-offset-2 ring-offset-black/20 border border-white/30' 
+                              : 'hover:scale-110 border border-white/20'}
+                            shadow-lg hover:shadow-xl`}
+                          title={image.title}
+                        />
+                      );
+                    })}
+                  </div>
+                </motion.div>
+
+                {/* Color Selection Buttons - Mobile */}
+                <div className="md:hidden flex items-center justify-center gap-3 bg-black/20 backdrop-blur-sm px-4 py-3 rounded-full mt-4">
                   {videoGallery.map((image, index) => {
-                    console.log('Image title:', image.title);
-                    // Extract color name from file path instead of title
                     const colorName = image.src.split('/').pop()?.split('.')[0] || '';
-                    console.log('Color name:', colorName, 'Color class:', colorMap[colorName]);
                     return (
                       <button
                         key={index}
@@ -481,8 +476,7 @@ export default function PortfolioDesign() {
                     );
                   })}
                 </div>
-
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
