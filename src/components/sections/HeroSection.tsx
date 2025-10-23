@@ -5,9 +5,25 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/locales/translations';
+import { useState, useEffect, useRef } from 'react';
 
 const HeroSection = () => {
   const { language } = useLanguage();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <section className="min-h-screen flex items-center">
@@ -70,13 +86,47 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Link
-                href="/cv.pdf"
-                download
-                className="inline-block text-lg md:text-xl bg-accent text-primary px-8 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-300 uppercase tracking-wide"
-              >
-                {getTranslation(language, 'hero.download_cv')}
-              </Link>
+              <div className="flex gap-4">
+                <Link
+                  href="/cv.pdf"
+                  download
+                  className="inline-block text-base md:text-xl bg-accent text-primary px-4 md:px-8 py-2 md:py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-300 uppercase tracking-wide"
+                >
+                  {getTranslation(language, 'hero.download_cv')}
+                </Link>
+                <div 
+                  ref={dropdownRef} 
+                  className="relative"
+                  style={{ minWidth: '180px' }}
+                  onMouseEnter={() => setIsDropdownOpen(true)}
+                  onMouseLeave={() => setIsDropdownOpen(false)}
+                >
+                  <button
+                    className={`w-full text-base md:text-xl bg-[#2A2A2A] text-white px-4 md:px-8 py-2 md:py-3 font-semibold transition-all duration-300 uppercase tracking-wide flex items-center justify-center ${isDropdownOpen ? 'rounded-t-md' : 'rounded-md'} hover:bg-accent`}
+                  >
+                    {getTranslation(language, 'nav.portfolio')}
+                    <span className={`ml-2 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>▼</span>
+                  </button>
+                  <div 
+                    className={`absolute top-full left-0 w-full transition-all duration-300 z-50 ${isDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                    style={{ transform: 'translateY(0)' }}
+                  >
+                    <Link
+                      href="/portfolio/3d-design"
+                      className="block px-4 md:px-8 py-2 md:py-3 text-white bg-[#2A2A2A] hover:bg-accent transition-all duration-300 whitespace-nowrap text-center border-b border-accent/20 text-base md:text-xl"
+                    >
+                      {getTranslation(language, 'portfolio_categories.design')}
+                    </Link>
+                    <Link
+                      href="/portfolio/software-web"
+                      className="block px-4 md:px-8 py-2 md:py-3 text-white bg-[#2A2A2A] hover:bg-accent transition-all duration-300 whitespace-nowrap text-center rounded-b-md text-base md:text-xl"
+                    >
+                      {getTranslation(language, 'portfolio_categories.software')}
+                    </Link>
+                  </div>
+                  
+                </div>
+              </div>
             </motion.div>
           </motion.div>
           
