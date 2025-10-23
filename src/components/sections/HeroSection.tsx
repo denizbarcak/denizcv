@@ -10,7 +10,21 @@ import { useState, useEffect, useRef } from 'react';
 const HeroSection = () => {
   const { language } = useLanguage();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -26,8 +40,8 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center">
-      <div className="container mx-auto px-4 pt-16 pb-16 md:pt-2 md:pb-14 lg:py-24">
+    <section className="min-h-[110vh] md:min-h-screen flex items-center">
+      <div className="container mx-auto px-4 pt-16 pb-24 md:pt-2 md:pb-14 lg:py-24">
         <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8">
           {/* Profile Image - Shows at top on mobile */}
           <motion.div
@@ -55,10 +69,10 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl text-center lg:text-left lg:ml-24"
+            className="max-w-xl text-center lg:text-left lg:ml-24 w-full"
           >
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-4 text-white"
+              className="text-4xl md:text-7xl font-bold mb-4 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -66,7 +80,7 @@ const HeroSection = () => {
               {getTranslation(language, 'hero.greeting')}
             </motion.h1>
             <motion.h2 
-              className="text-5xl md:text-7xl font-bold mb-6 text-accent inline-flex"
+              className="text-4xl md:text-7xl font-bold mb-6 text-accent inline-flex"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -74,7 +88,7 @@ const HeroSection = () => {
               {getTranslation(language, 'hero.name')}
             </motion.h2>
             <motion.p 
-              className="text-xl md:text-2xl text-gray-300 mb-8"
+              className="text-lg md:text-2xl text-gray-300 mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -86,7 +100,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-center lg:justify-start w-full">
                 <Link
                   href="/cv.pdf"
                   download
@@ -98,17 +112,18 @@ const HeroSection = () => {
                   ref={dropdownRef} 
                   className="relative"
                   style={{ minWidth: '180px' }}
-                  onMouseEnter={() => setIsDropdownOpen(true)}
-                  onMouseLeave={() => setIsDropdownOpen(false)}
+                  onMouseEnter={() => !isMobile && setIsDropdownOpen(true)}
+                  onMouseLeave={() => !isMobile && setIsDropdownOpen(false)}
                 >
                   <button
+                    onClick={() => isMobile && setIsDropdownOpen(!isDropdownOpen)}
                     className={`w-full text-base md:text-xl bg-[#2A2A2A] text-white px-4 md:px-8 py-2 md:py-3 font-semibold transition-all duration-300 uppercase tracking-wide flex items-center justify-center ${isDropdownOpen ? 'rounded-t-md' : 'rounded-md'} hover:bg-accent`}
                   >
                     {getTranslation(language, 'nav.portfolio')}
                     <span className={`ml-2 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>▼</span>
                   </button>
                   <div 
-                    className={`absolute top-full left-0 w-full transition-all duration-300 z-50 ${isDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                    className={`absolute top-full left-0 w-full transition-all duration-300 z-[100] ${isDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                     style={{ transform: 'translateY(0)' }}
                   >
                     <Link
