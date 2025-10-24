@@ -14,6 +14,7 @@ const Biography = () => {
       school: getTranslation(language, 'education.ucuncu_binyil.name'),
       program: getTranslation(language, 'education.ucuncu_binyil.program'),
       period: getTranslation(language, 'education.ucuncu_binyil.period'),
+      description: getTranslation(language, 'education.ucuncu_binyil.description'),
     },
     {
       school: getTranslation(language, 'education.halic.name'),
@@ -155,7 +156,8 @@ const Biography = () => {
                       <h3 className="text-white font-medium text-lg">{edu.school}</h3>
                       <span className="text-accent text-sm whitespace-nowrap">{edu.period}</span>
                     </div>
-                    <p className="text-gray-400">{edu.program}</p>
+                    {edu.program && <p className="text-gray-400">{edu.program}</p>}
+                    {edu.description && <p className="text-gray-400 mt-2 text-sm">{edu.description}</p>}
                   </motion.div>
                 ))}
               </div>

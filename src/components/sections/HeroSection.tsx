@@ -101,13 +101,13 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="flex gap-4 justify-center lg:justify-start w-full">
-                <Link
-                  href="/cv.pdf"
-                  download
+                <a
+                  href={`/file/denizbarcak-cv-${language}.pdf`}
+                  download={`denizbarcak-cv-${language}.pdf`}
                   className="inline-block text-base md:text-xl bg-accent text-primary px-4 md:px-8 py-2 md:py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-300 uppercase tracking-wide"
                 >
                   {getTranslation(language, 'hero.download_cv')}
-                </Link>
+                </a>
                 <div 
                   ref={dropdownRef} 
                   className="relative"

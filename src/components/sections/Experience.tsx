@@ -10,50 +10,50 @@ const Experience = () => {
   const experiences = [
     {
       company: 'Kartelam',
-      position: 'Full Stack Developer',
-      location: 'İstanbul',
-      period: 'Eki 2024 – Nis 2025',
+      position: 'Jr. Full Stack Developer',
+      location: 'Istanbul',
+      period: 'Oct 2024 – Apr 2025',
       achievements: getTranslation(language, 'resume.achievements.kartelam'),
     },
     {
-      company: 'Teampack Packaging Services Inc.',
-      position: 'Endüstriyel Tasarımcı',
-      location: 'Ataşehir, İstanbul',
-      period: 'Tem 2022 – May 2023',
+      company: 'Teampack Packaging',
+      position: 'Industrial Designer',
+      location: 'Atasehir, Istanbul',
+      period: 'Jul 2022 – May 2023',
       achievements: getTranslation(language, 'resume.achievements.teampack'),
     },
     {
-      company: 'Atlas 34 İnşaat',
-      position: 'İç Mimar',
-      location: 'İstanbul',
-      period: 'Tem 2021 – Haz 2022',
+      company: 'Atlas 34 Construction',
+      position: 'Interior Architect',
+      location: 'Istanbul',
+      period: 'Jul 2021 – Jun 2022',
       achievements: getTranslation(language, 'resume.achievements.atlas34'),
     },
     {
-      company: 'Tabanlıoğlu Mimarlık',
-      position: 'İç Mimarlık Stajyeri',
-      location: 'İstanbul',
-      period: 'Haz 2019 – Tem 2019',
+      company: 'Tabanlioglu Architects',
+      position: 'Interior Architecture Internship',
+      location: 'Istanbul',
+      period: 'Jun 2019 – Aug 2019',
       achievements: getTranslation(language, 'resume.achievements.tabanlioglu'),
     },
     {
-      company: 'Kavram Bağımsız Denetim',
-      position: 'Ofis Asistanı',
-      location: 'İstanbul',
-      period: 'Oca 2016 – Şub 2017',
+      company: 'Kavram Independent Audit',
+      position: 'Internship',
+      location: 'Istanbul',
+      period: 'Jan 2016 – Feb 2017',
       achievements: getTranslation(language, 'resume.achievements.kavram'),
     },
     {
-      company: 'Doka Kalıp Teknolojileri',
-      position: 'Yaz Stajyeri',
-      location: 'İstanbul',
+      company: 'Doka Formwork Technologies',
+      position: 'Summer Internship',
+      location: 'Istanbul',
       period: '2015',
       achievements: [],
     },
     {
-      company: 'Consulta Bağımsız Denetim',
-      position: 'Yaz Stajyeri',
-      location: 'İstanbul',
+      company: 'Consulta Independent Audit',
+      position: 'Summer Internship',
+      location: 'Istanbul',
       period: '2013',
       achievements: [],
     },
@@ -119,8 +119,8 @@ const Experience = () => {
             className="mt-16 text-center"
           >
             <a
-              href="/cv.pdf"
-              download
+              href={`/file/denizbarcak-cv-${language}.pdf`}
+              download={`denizbarcak-cv-${language}.pdf`}
               className="inline-flex items-center px-8 py-3 bg-accent text-primary rounded-lg font-semibold hover:bg-accent/90 transition-colors duration-300"
             >
               <svg

@@ -294,18 +294,16 @@ export const translations: TranslationsType = {
 
     // Resume Page
     resume: {
-      professional_journey: 'Professional Journey',
+      professional_journey: 'Experience',
       download_cv: 'Download CV (PDF)',
       achievements: {
         kartelam: [
-          'Contributed to frontend and backend development of a B2B fabric supply platform.',
-          'Utilized Go (Fiber), Next.js, React, and MongoDB technologies.',
-          'Developed order management, product, and variant systems between suppliers and stores.',
-          'Designed API integrations, authentication (JWT), and admin panel architecture.'
+          'Worked actively at Kartelam during my Full-Stack Software Developer training to gain practical experience.',
+          'Contributed to the development of a B2B web platform connecting wholesale textile suppliers with stores.',
+          'Worked on both frontend and backend to facilitate product management and order processes.'
         ],
         teampack: [
-          'Designed custom packaging solutions, vacuum forms, and color charts for various products.',
-          'Prepared 3D technical modeling of vacuum molds using Fusion 360.',
+          'Designed custom packaging and vacuum mold solutions using Fusion 360.',
           'Created 3D product visualizations and provided technical support for the production process.'
         ],
         atlas34: [
@@ -360,8 +358,9 @@ export const translations: TranslationsType = {
     education: {
       ucuncu_binyil: {
         name: 'Üçüncü Binyıl Academy',
-        program: 'Software Development',
-        period: 'Sep 2023 - Dec 2024'
+        program: '',
+        period: 'Sep 2023 - Feb 2025',
+        description: 'Completed a comprehensive training program focused on modern software development methods and technologies, covering mobile, frontend, and backend development.'
       },
       halic: {
         name: 'Halic University',
@@ -371,7 +370,7 @@ export const translations: TranslationsType = {
       ata: {
         name: 'Ata College',
         program: 'High School',
-        period: '2011 - 2014'
+        period: '2011 - 2016'
       }
     }
   },
@@ -555,19 +554,17 @@ export const translations: TranslationsType = {
 
     // Resume Page
     resume: {
-      professional_journey: 'Profesyonel Yolculuk',
+      professional_journey: 'Deneyim',
       download_cv: 'CV İndir (PDF)',
       achievements: {
         kartelam: [
-          'B2B kumaş tedarik platformunun frontend ve backend geliştirmesine katkıda bulundum.',
-          'Go (Fiber), Next.js, React ve MongoDB teknolojilerini kullandım.',
-          'Tedarikçiler ve mağazalar arasında sipariş yönetimi, ürün ve varyant sistemleri geliştirdim.',
-          'API entegrasyonları, kimlik doğrulama (JWT) ve yönetici paneli mimarisi tasarladım.'
+          'Full-Stack Software Developer eğitimim süresince, pratik kazanmak ve deneyim edinmek amacıyla Kartelam firmasında aktif olarak çalıştım.',
+          'Toptan tekstil tedarikçileri ile mağazaları buluşturan B2B web platformunun geliştirilmesine katkıda bulundum.',
+          'Ürün yönetimi ve sipariş süreçlerini kolaylaştırmak için hem frontend hem de backend tarafında çalıştım.'
         ],
         teampack: [
-          'Çeşitli ürünler için özel ambalaj çözümleri, vakum formları ve renk kartları tasarladım.',
-          'Fusion 360 kullanarak vakum kalıplarının 3D teknik modellemesini hazırladım.',
-          'Üretim süreci için 3D ürün görselleştirmeleri oluşturdum ve teknik destek sağladım.'
+          'Fusion 360 kullanarak özel ambalaj ve vakum kalıp çözümleri tasarladım.',
+          '3D ürün görselleştirmeleri oluşturdum ve üretim sürecine teknik destek sağladım.'
         ],
         atlas34: [
           'Konut ve villa projeleri için iç mimari tasarım, görselleştirme ve proje yönetimi yaptım.',
@@ -621,8 +618,9 @@ export const translations: TranslationsType = {
     education: {
       ucuncu_binyil: {
         name: 'Üçüncü Binyıl Akademi',
-        program: 'Yazılım Geliştirme',
-        period: 'Eyl 2023 - Ara 2024'
+        program: '',
+        period: 'Eyl 2023 - Şub 2025',
+        description: 'Modern yazılım geliştirme yöntemleri ve teknolojilerine odaklanan, mobil, frontend ve backend alanlarını kapsayan kapsamlı bir eğitim programını tamamladım.'
       },
       halic: {
         name: 'Haliç Üniversitesi',
@@ -632,7 +630,7 @@ export const translations: TranslationsType = {
       ata: {
         name: 'Ata Koleji',
         program: 'Lise',
-        period: '2011 - 2014'
+        period: '2011 - 2016'
       }
     }
   }
