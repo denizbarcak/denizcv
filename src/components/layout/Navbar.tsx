@@ -50,19 +50,19 @@ const Navbar = () => {
   const genericHamburgerLine = `h-0.5 w-6 my-0.5 rounded-full bg-current transition ease transform duration-300`;
 
   return (
-    <>
+    <header>
       <nav className="fixed w-full z-50 bg-primary/90 backdrop-blur-sm transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-16">
+          <div className="flex items-center justify-between h-16 w-full">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" className="text-white text-xl font-bold">
                 Deniz Barçak
               </Link>
             </div>
-            
+
             {/* Desktop Navigation */}
-            <div className="hidden md:flex flex-1 justify-center">
+            <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
               <div className="flex items-center space-x-4">
                 {navItems.map((item) => (
                   <div
@@ -98,43 +98,36 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Language Selector - Desktop */}
-            <div className="hidden md:flex items-center justify-end">
+            {/* Language Selector & Mobile Navigation Button */}
+            <div className="flex items-center justify-end gap-2">
               <LanguageSelector />
-            </div>
-
-            {/* Mobile Navigation Button */}
-            <div className="md:hidden flex flex-1 justify-end">
-              <div className="flex items-center">
-                <LanguageSelector />
-                <button
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="ml-2 flex flex-col h-10 w-10 rounded justify-center items-center group"
-                  aria-label="Menu"
-                >
-                  <div
-                    className={`${genericHamburgerLine} ${
-                      isOpen
-                        ? "rotate-45 translate-y-1.5 opacity-100 group-hover:opacity-100"
-                        : "opacity-100 group-hover:opacity-100"
-                    }`}
-                  />
-                  <div
-                    className={`${genericHamburgerLine} ${
-                      isOpen 
-                        ? "opacity-0" 
-                        : "opacity-100 group-hover:opacity-100"
-                    }`}
-                  />
-                  <div
-                    className={`${genericHamburgerLine} ${
-                      isOpen
-                        ? "-rotate-45 -translate-y-1.5 opacity-100 group-hover:opacity-100"
-                        : "opacity-100 group-hover:opacity-100"
-                    }`}
-                  />
-                </button>
-              </div>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:hidden flex flex-col h-10 w-10 rounded justify-center items-center group"
+                aria-label="Toggle navigation menu"
+              >
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "rotate-45 translate-y-1.5 opacity-100 group-hover:opacity-100"
+                      : "opacity-100 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "opacity-0"
+                      : "opacity-100 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "-rotate-45 -translate-y-1.5 opacity-100 group-hover:opacity-100"
+                      : "opacity-100 group-hover:opacity-100"
+                  }`}
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -286,7 +279,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 };
 

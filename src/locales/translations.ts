@@ -340,7 +340,7 @@ export const translations: TranslationsType = {
     // About Section
     about: {
       title: 'About Me',
-      subtitle: 'Industrial Designer & Web Developer',
+      subtitle: 'Designer & Web Developer',
       personal_info: 'Personal Information',
       location: 'Location',
       location_value: 'Istanbul, Turkey',
@@ -601,7 +601,7 @@ export const translations: TranslationsType = {
     // About Section
     about: {
       title: 'Hakkımda',
-      subtitle: 'Endüstriyel Tasarımcı & Web Geliştirici',
+      subtitle: 'Tasarımcı & Web Geliştirici',
       personal_info: 'Kişisel Bilgiler',
       location: 'Konum',
       location_value: 'İstanbul, Türkiye',

@@ -13,8 +13,16 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Deniz Barcak - Portfolio',
-  description: 'Personal portfolio website of Deniz Barcak',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: 'Deniz Barçak - Portfolio | 3D Designer & Software Developer',
+  description: 'Portfolio of Deniz Barçak - showcasing 3D design projects, software development work, and web applications. Explore my creative and technical projects.',
+  keywords: ['Deniz Barçak', 'portfolio', '3D design', 'software developer', 'web developer', 'designer'],
+  authors: [{ name: 'Deniz Barçak' }],
+  openGraph: {
+    title: 'Deniz Barçak - Portfolio',
+    description: 'Portfolio showcasing 3D design and software development projects',
+    type: 'website',
+  },
   icons: {
     icon: '/images/Others/favicon_final.ico',
   },

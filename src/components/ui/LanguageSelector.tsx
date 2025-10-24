@@ -17,9 +17,12 @@ const LanguageSelector = () => {
   const currentLanguage = languages.find(lang => lang.code === language);
 
   return (
-    <div className="relative">
+    <div
+      className="relative"
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <button
-        onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-accent transition-colors duration-200"
       >
         <span>{currentLanguage?.label}</span>

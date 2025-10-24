@@ -43,22 +43,22 @@ const HeroSection = () => {
     <section className="min-h-[110vh] md:min-h-screen flex items-center">
       <div className="container mx-auto px-4 pt-16 pb-24 md:pt-2 md:pb-14 lg:py-24">
         <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-8">
-          {/* Profile Image - Shows at top on mobile */}
+          {/* Profile Image - Mobile (top) and Desktop (right side) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:hidden w-48 h-48 md:w-60 md:h-60 relative mb-4 md:mb-2"
+            className="w-48 h-48 md:w-60 md:h-60 lg:w-[620px] lg:h-[620px] relative mb-4 md:mb-2 lg:mb-0 lg:order-2 lg:ml-20"
           >
             <div className="w-full h-full rounded-full border-4 border-accent overflow-hidden relative">
               <Image
                 src="/images/photo/PRF_0450.webp"
-                alt="Deniz Barçak"
+                alt="Deniz Barçak - Portfolio Photo"
                 fill
-                className="object-cover"
+                className="object-cover lg:object-[center_30%] lg:scale-[0.9]"
                 priority
                 loading="eager"
-                sizes="(max-width: 768px) 192px, (max-width: 1024px) 240px, 0px"
+                sizes="(max-width: 768px) 192px, (max-width: 1024px) 240px, 620px"
                 quality={90}
               />
             </div>
@@ -69,7 +69,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-xl text-center lg:text-left lg:ml-24 w-full"
+            className="max-w-xl text-center lg:text-left lg:ml-24 w-full lg:order-1"
           >
             <motion.h1 
               className="text-4xl md:text-7xl font-bold mb-4 text-white"
@@ -143,25 +143,6 @@ const HeroSection = () => {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
-          
-          {/* Profile Image - Shows on desktop only */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="hidden lg:block relative w-[620px] h-[620px] lg:ml-20"
-          >
-              <Image
-                src="/images/photo/PRF_0450.webp"
-                alt="Deniz Barçak"
-                fill
-                className="object-cover object-[center_30%] rounded-full border-4 border-accent scale-[0.9]"
-                priority
-                loading="eager"
-                sizes="(max-width: 768px) 100vw, 620px"
-                quality={90}
-              />
           </motion.div>
         </div>
       </div>
