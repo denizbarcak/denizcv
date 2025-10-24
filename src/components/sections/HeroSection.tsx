@@ -55,7 +55,7 @@ const HeroSection = () => {
                 src="/images/photo/PRF_0450.webp"
                 alt="Deniz Barçak - Portfolio Photo"
                 fill
-                className="object-cover lg:object-[center_30%] lg:scale-[0.9]"
+                className="object-cover object-center"
                 priority
                 loading="eager"
                 sizes="(max-width: 768px) 192px, (max-width: 1024px) 240px, 620px"
