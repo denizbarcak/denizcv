@@ -245,11 +245,6 @@ export const translations: TranslationsType = {
                 description: 'Bird\'s eye view of the complex showing the overall layout'
               },
               {
-                src: '/3D/DIFC/Difc6.webp',
-                title: 'Plaza Detail',
-                description: 'Detailed view of the plaza showing architectural elements'
-              },
-              {
                 src: '/3D/DIFC/Difc7.webp',
                 title: 'Facade Detail',
                 description: 'Close-up view of the building\'s facade patterns'
@@ -509,11 +504,6 @@ export const translations: TranslationsType = {
                 src: '/3D/DIFC/Difc5.webp',
                 title: 'Kuş Bakışı Görünüm',
                 description: 'Kompleksin genel yerleşimini gösteren havadan görünüm'
-              },
-              {
-                src: '/3D/DIFC/Difc6.webp',
-                title: 'Plaza Detayı',
-                description: 'Plazanın mimari öğelerini gösteren detaylı görünüm'
               },
               {
                 src: '/3D/DIFC/Difc7.webp',
