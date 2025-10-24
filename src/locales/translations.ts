@@ -326,7 +326,7 @@ export const translations: TranslationsType = {
     hero: {
       greeting: 'Hello, I\'m',
       name: 'Deniz Barçak',
-      description: 'I combine creative thinking and technical skills to develop productive solutions in both 3D modeling and software development. With a design-thinking approach, I bring projects together aesthetically, functionally, and technically as a whole. I am passionate about exploring new technologies and pushing boundaries in every project.',
+      description: 'By combining my creative thinking and technical skills, I aim to produce holistic solutions that are aesthetic, functional, and technical in the fields of software development and 3D modeling.',
       download_cv: 'Download CV'
     },
 
@@ -587,7 +587,7 @@ export const translations: TranslationsType = {
     hero: {
       greeting: 'Merhaba, Ben',
       name: 'Deniz Barçak',
-      description: 'Yaratıcı düşünme ve teknik becerileri birleştirerek hem 3D modelleme hem de yazılım geliştirme alanlarında üretken çözümler geliştiriyorum. Tasarım odaklı düşünme yaklaşımıyla projeleri estetik, işlevsel ve teknik olarak bir bütün haline getiriyorum. Yeni teknolojileri keşfetmeye ve her projede sınırları zorlamaya tutkuluyum.',
+      description: 'Yaratıcı düşünme ve teknik becerilerimi birleştirerek, yazılım geliştirme ve 3D modelleme alanlarında estetik, işlevsel ve teknik açıdan bütünsel çözümler üretmeyi amaçlıyorum.',
       download_cv: 'CV İndir'
     },
 
