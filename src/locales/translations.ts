@@ -95,16 +95,19 @@ interface TranslationType {
       name: string;
       program: string;
       period: string;
+      description?: string;
     };
     halic: {
       name: string;
       program: string;
       period: string;
+      description?: string;
     };
     ata: {
       name: string;
       program: string;
       period: string;
+      description?: string;
     };
   };
 }
