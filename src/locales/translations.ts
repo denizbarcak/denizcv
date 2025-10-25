@@ -24,6 +24,28 @@ interface TranslationType {
         difc: ProjectType;
       };
     };
+    software: {
+      title: string;
+      projects: {
+        this_website: {
+          title: string;
+          short_description: string;
+          explanation: {
+            intro: string;
+            showcase: string;
+            fullstack: string;
+            responsive: string;
+          };
+          exploration: {
+            architecture: string;
+            styling: string;
+            animations: string;
+            performance: string;
+            accessibility: string;
+          };
+        };
+      };
+    };
   };
   portfolio_categories: {
     design: string;
@@ -258,6 +280,28 @@ export const translations: TranslationsType = {
                 description: 'Internal courtyard showing the integration of nature and architecture'
               }
             ]
+          }
+        }
+      },
+      software: {
+        title: 'Software & Web',
+        projects: {
+          this_website: {
+            title: 'This Website!',
+            short_description: 'Personal portfolio website made with Next.js',
+            explanation: {
+              intro: 'A modern portfolio website showcasing my journey as a developer and designer',
+              showcase: 'Combines both my 3D design work and software development projects in one cohesive platform',
+              fullstack: 'Built with Next.js 14 for server-side rendering, optimized performance, and SEO benefits',
+              responsive: 'Fully responsive design that adapts seamlessly from mobile phones to desktop screens'
+            },
+            exploration: {
+              architecture: 'Utilizes Next.js App Router with TypeScript for type-safe, scalable architecture',
+              styling: 'Styled with Tailwind CSS utility classes for rapid development and consistent design system',
+              animations: 'Enhanced with Framer Motion for smooth, performant animations and page transitions',
+              performance: 'Optimized with Next.js Image component, lazy loading, and code splitting for fast load times',
+              accessibility: 'Built with accessibility in mind using Headless UI components and semantic HTML'
+            }
           }
         }
       }
@@ -518,6 +562,28 @@ export const translations: TranslationsType = {
                 description: 'Doğa ve mimarinin bütünleşmesini gösteren iç avlu'
               }
             ]
+          }
+        }
+      },
+      software: {
+        title: 'Yazılım & Web',
+        projects: {
+          this_website: {
+            title: 'Bu Web Sitesi!',
+            short_description: 'Next.js ile yapılmış kişisel portföy web sitesi',
+            explanation: {
+              intro: 'Bir geliştirici ve tasarımcı olarak yolculuğumu sergileyen modern bir portföy web sitesi',
+              showcase: 'Hem 3D tasarım çalışmalarımı hem de yazılım geliştirme projelerimi tek bir platformda bir araya getiriyor',
+              fullstack: 'Sunucu taraflı render, optimize performans ve SEO avantajları için Next.js 14 ile geliştirildi',
+              responsive: 'Mobil telefonlardan masaüstü ekranlara kadar sorunsuz uyum sağlayan tamamen duyarlı tasarım'
+            },
+            exploration: {
+              architecture: 'Tip güvenli, ölçeklenebilir mimari için TypeScript ile Next.js App Router kullanıyor',
+              styling: 'Hızlı geliştirme ve tutarlı tasarım sistemi için Tailwind CSS utility class\'ları ile stillendirildi',
+              animations: 'Akıcı, performanslı animasyonlar ve sayfa geçişleri için Framer Motion ile geliştirildi',
+              performance: 'Hızlı yüklenme süreleri için Next.js Image component, lazy loading ve code splitting ile optimize edildi',
+              accessibility: 'Headless UI bileşenleri ve semantik HTML kullanılarak erişilebilirlik göz önünde bulunduruldu'
+            }
           }
         }
       }

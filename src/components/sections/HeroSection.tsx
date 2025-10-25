@@ -122,21 +122,21 @@ const HeroSection = () => {
                     {getTranslation(language, 'nav.portfolio')}
                     <span className={`ml-2 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}>▼</span>
                   </button>
-                  <div 
+                  <div
                     className={`absolute top-full left-0 w-full transition-all duration-300 z-[100] ${isDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                     style={{ transform: 'translateY(0)' }}
                   >
                     <Link
-                      href="/portfolio/3d-design"
+                      href="/portfolio/software-web"
                       className="block px-4 md:px-8 py-2 md:py-3 text-white bg-[#2A2A2A] hover:bg-accent transition-all duration-300 whitespace-nowrap text-center border-b border-accent/20 text-base md:text-xl"
                     >
-                      {getTranslation(language, 'portfolio_categories.design')}
+                      {getTranslation(language, 'portfolio_categories.software')}
                     </Link>
                     <Link
-                      href="/portfolio/software-web"
+                      href="/portfolio/3d-design"
                       className="block px-4 md:px-8 py-2 md:py-3 text-white bg-[#2A2A2A] hover:bg-accent transition-all duration-300 whitespace-nowrap text-center rounded-b-md text-base md:text-xl"
                     >
-                      {getTranslation(language, 'portfolio_categories.software')}
+                      {getTranslation(language, 'portfolio_categories.design')}
                     </Link>
                   </div>
                   
