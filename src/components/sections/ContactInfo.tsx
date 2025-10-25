@@ -70,13 +70,12 @@ const ContactInfo = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 key={method.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ 
-                  scale: 1.02,
-                  y: -5,
+                  scale: 1.02
                 }}
                 className="p-3.5 md:p-6 bg-secondary rounded-lg transition-all duration-300 group hover:shadow-xl hover:shadow-accent/10"
               >
