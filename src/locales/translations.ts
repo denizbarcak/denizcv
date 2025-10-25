@@ -44,6 +44,24 @@ interface TranslationType {
             accessibility: string;
           };
         };
+        planvia: {
+          title: string;
+          short_description: string;
+          explanation: {
+            intro: string;
+            showcase: string;
+            fullstack: string;
+            responsive: string;
+          };
+          exploration: {
+            architecture: string;
+            styling: string;
+            animations: string;
+            performance: string;
+            accessibility: string;
+            scalability: string;
+          };
+        };
       };
     };
   };
@@ -301,6 +319,24 @@ export const translations: TranslationsType = {
               animations: 'Enhanced with Framer Motion for smooth, performant animations and page transitions',
               performance: 'Optimized with Next.js Image component, lazy loading, and code splitting for fast load times',
               accessibility: 'Built with accessibility in mind using Headless UI components and semantic HTML'
+            }
+          },
+          planvia: {
+            title: 'PlanVia',
+            short_description: 'Modern reservation and business management platform developed with Next.js and Go Fiber',
+            explanation: {
+              intro: 'A comprehensive system that brings together reservation, customer tracking, and event planning for businesses in different sectors under one roof.',
+              showcase: 'The project combines a Go-based API (Fiber + MongoDB) and Next.js-based user interface in a monorepo structure.',
+              fullstack: 'Modules such as server-side rendering, JWT-based authentication, QR code integration, recurring reservations, and customer notes were planned and developed.',
+              responsive: 'With its simple and intuitive interface, it aims to digitalize the daily operations of businesses and facilitate interaction with their customers.'
+            },
+            exploration: {
+              architecture: 'Fast and secure API architecture with Go Fiber and MongoDB',
+              styling: 'JWT-based authentication and authorization',
+              animations: 'Next.js 14 App Router + Tailwind CSS + Framer Motion infrastructure',
+              performance: 'Dynamic calendar management with React Big Calendar',
+              accessibility: 'User-friendly dashboard with Headless UI and Tremor components',
+              scalability: 'Scalable infrastructure for AI-powered reporting, payment, and customer interface modules'
             }
           }
         }
@@ -583,6 +619,24 @@ export const translations: TranslationsType = {
               animations: 'Akıcı, performanslı animasyonlar ve sayfa geçişleri için Framer Motion ile geliştirildi',
               performance: 'Hızlı yüklenme süreleri için Next.js Image component, lazy loading ve code splitting ile optimize edildi',
               accessibility: 'Headless UI bileşenleri ve semantik HTML kullanılarak erişilebilirlik göz önünde bulunduruldu'
+            }
+          },
+          planvia: {
+            title: 'PlanVia',
+            short_description: 'Next.js ve Go Fiber ile geliştirilen modern rezervasyon ve işletme yönetim platformu',
+            explanation: {
+              intro: 'Farklı sektörlerdeki işletmelerin rezervasyon, müşteri takibi ve etkinlik planlamasını tek bir çatı altında toplayan kapsamlı bir sistem.',
+              showcase: 'Proje, monorepo yapısında Go tabanlı API (Fiber + MongoDB) ve Next.js tabanlı kullanıcı arayüzünü birleştiriyor.',
+              fullstack: 'Sunucu tarafı render, JWT tabanlı kimlik doğrulama, QR kod entegrasyonu, tekrarlayan rezervasyonlar ve müşteri notları gibi modüller planlanarak geliştirildi.',
+              responsive: 'Sade ve sezgisel arayüzü sayesinde işletmelerin günlük operasyonlarını dijitalleştirip müşterileriyle olan etkileşimi kolaylaştırmayı hedefliyor.'
+            },
+            exploration: {
+              architecture: 'Go Fiber ve MongoDB ile hızlı ve güvenli API mimarisi',
+              styling: 'JWT tabanlı kimlik doğrulama ve yetkilendirme',
+              animations: 'Next.js 14 App Router + Tailwind CSS + Framer Motion altyapısı',
+              performance: 'React Big Calendar ile dinamik takvim yönetimi',
+              accessibility: 'Headless UI ve Tremor bileşenleriyle kullanıcı dostu dashboard',
+              scalability: 'AI destekli raporlama, ödeme ve müşteri arayüzü modülleri için ölçeklenebilir altyapı'
             }
           }
         }
