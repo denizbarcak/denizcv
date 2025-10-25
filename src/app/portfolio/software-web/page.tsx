@@ -26,7 +26,7 @@ export default function PortfolioSoftware() {
     {
       id: 'this-website',
       technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Headless UI'],
-      image: '/images/others/favicon_final.ico',
+      image: '/images/Others/favicon.ico',
       links: {
         github: 'https://github.com/denizbarcak/denizcv',
         live: '/'
