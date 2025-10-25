@@ -140,16 +140,12 @@ const Biography = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
+            <div className="space-y-6">
+              <h2 className="text-3xl font-bold text-white">{getTranslation(language, 'about.education')}</h2>
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-white">{getTranslation(language, 'about.education')}</h2>
-                <div className="space-y-6">
-                {getEducation().map((edu, index) => (
-                  <motion.div
+                {getEducation().map((edu) => (
+                  <div
                     key={edu.school}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
                     className="p-5 bg-secondary rounded-lg hover:bg-secondary/70 transition-all duration-300"
                   >
                     <div className="flex justify-between items-start mb-2">
@@ -158,7 +154,7 @@ const Biography = () => {
                     </div>
                     {edu.program && <p className="text-gray-400">{edu.program}</p>}
                     {edu.description && <p className="text-gray-400 mt-2 text-sm">{edu.description}</p>}
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>

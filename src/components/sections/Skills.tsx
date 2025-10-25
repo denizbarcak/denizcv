@@ -168,18 +168,6 @@ const Skills = () => {
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-      },
-    }),
-  };
-
   return (
     <section className="pt-10 pb-20 md:py-20">
       <div className="container mx-auto px-4 relative z-10">
@@ -197,25 +185,14 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* 3D & Design Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white mb-8">
               {getTranslation(language, 'skills.design_title')}
             </h3>
             <div className="grid grid-cols-2 gap-4">
-              {designSkills.map((skill, index) => (
-                <motion.div
+              {designSkills.map((skill) => (
+                <div
                   key={skill.name}
-                  custom={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={cardVariants}
                   className="p-4 bg-secondary rounded-lg group hover:bg-accent/20 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
@@ -233,31 +210,20 @@ const Skills = () => {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Software & Web Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <h3 className="text-2xl font-bold text-white mb-8">
               {getTranslation(language, 'skills.software_title')}
             </h3>
             <div className="grid grid-cols-2 gap-4">
-              {devSkills.map((skill, index) => (
-                <motion.div
+              {devSkills.map((skill) => (
+                <div
                   key={skill.name}
-                  custom={index}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={cardVariants}
                   className="p-4 bg-secondary rounded-lg group hover:bg-accent/20 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
@@ -275,10 +241,10 @@ const Skills = () => {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
