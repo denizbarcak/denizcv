@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/layout/Navbar';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import { Suspense } from 'react';
+import ConditionalNavbar from '@/components/layout/ConditionalNavbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -38,7 +38,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Suspense fallback={<LoadingScreen />}>
           <LanguageProvider>
-            <Navbar />
+            <ConditionalNavbar />
             {children}
           </LanguageProvider>
         </Suspense>
