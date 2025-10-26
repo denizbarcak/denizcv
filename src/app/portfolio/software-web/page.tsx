@@ -229,6 +229,11 @@ export default function PortfolioSoftware() {
                         <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium border border-accent/30">
                           {project.id === 'planvia' ? 'Full-Stack' : 'Frontend'}
                         </span>
+                        {project.id === 'planvia' && (
+                          <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium border border-yellow-500/30">
+                            {language === 'en' ? 'In Development' : 'Geliştirme Aşamasında'}
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -395,10 +400,15 @@ export default function PortfolioSoftware() {
                         ) : null}
 
                         {/* Tags - Mobile */}
-                        <div className="flex md:hidden items-center gap-2 mt-6">
+                        <div className="flex md:hidden items-center gap-2 mt-6 flex-wrap">
                           <span className="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm font-medium border border-accent/30">
                             {project.id === 'planvia' ? 'Full-Stack' : 'Frontend'}
                           </span>
+                          {project.id === 'planvia' && (
+                            <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm font-medium border border-yellow-500/30">
+                              {language === 'en' ? 'In Development' : 'Geliştirme Aşamasında'}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </motion.div>

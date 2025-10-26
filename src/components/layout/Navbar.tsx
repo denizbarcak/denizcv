@@ -55,15 +55,15 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 w-full">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 md:flex-1 lg:flex-shrink-0">
               <Link href="/" className="text-white text-xl font-bold">
                 Deniz Barçak
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
-              <div className="flex items-center space-x-4">
+            <div className="hidden md:flex md:flex-1 md:justify-center md:pl-8 lg:pl-0 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+              <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
                 {navItems.map((item) => (
                   <div
                     key={item.name}
@@ -73,7 +73,7 @@ const Navbar = () => {
                   >
                     {item.dropdown ? (
                       <button
-                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-default ${
+                        className={`px-2 md:px-2.5 lg:px-3 py-2 rounded-md text-xs md:text-sm lg:text-sm font-medium transition-colors duration-200 cursor-default whitespace-nowrap ${
                           pathname?.startsWith('/portfolio')
                             ? 'text-accent'
                             : 'text-gray-300'
@@ -84,7 +84,7 @@ const Navbar = () => {
                     ) : (
                       <Link
                         href={item.path}
-                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                        className={`px-2 md:px-2.5 lg:px-3 py-2 rounded-md text-xs md:text-sm lg:text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
                           pathname === item.path
                             ? 'text-accent'
                             : 'text-gray-300 hover:text-accent'
@@ -99,7 +99,7 @@ const Navbar = () => {
             </div>
 
             {/* Language Selector & Mobile Navigation Button */}
-            <div className="flex items-center justify-end gap-2">
+            <div className="flex items-center justify-end gap-2 md:flex-1 lg:flex-shrink-0">
               <LanguageSelector />
               <button
                 onClick={() => setIsOpen(!isOpen)}
