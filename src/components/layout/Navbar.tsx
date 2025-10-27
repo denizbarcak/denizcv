@@ -1,17 +1,26 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSelector from '../ui/LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/locales/translations';
 
-const Navbar = () => {
+interface NavbarProps {
+  showPlanViaExtension?: boolean;
+}
+
+const Navbar = ({ showPlanViaExtension = false }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
+  const [planviaData, setPlanviaData] = useState<{
+    username: string;
+    expiresAt?: string;
+  } | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
   const { language } = useLanguage();
 
   const navItems = [
@@ -48,6 +57,44 @@ const Navbar = () => {
   ];
 
   const genericHamburgerLine = `h-0.5 w-6 my-0.5 rounded-full bg-current transition ease transform duration-300`;
+
+  // Load PlanVia access data when extension is shown
+  useEffect(() => {
+    if (showPlanViaExtension) {
+      try {
+        const storedData = localStorage.getItem('planvia_access');
+        if (storedData) {
+          const data = JSON.parse(storedData);
+          setPlanviaData({
+            username: data.username,
+            expiresAt: data.expiresAt,
+          });
+        }
+      } catch (error) {
+        console.error('Error loading PlanVia data:', error);
+      }
+    }
+  }, [showPlanViaExtension]);
+
+  // Handle logout from PlanVia
+  const handlePlanViaLogout = () => {
+    localStorage.removeItem('planvia_access');
+    router.push('/portfolio/software-web');
+  };
+
+  // Format expiry date
+  const formatExpiryDate = (dateString?: string) => {
+    if (!dateString) return language === 'en' ? 'Unlimited' : 'Sınırsız';
+
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat(language === 'en' ? 'en-US' : 'tr-TR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    }).format(date);
+  };
 
   return (
     <header>
@@ -131,6 +178,73 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* PlanVia Extension */}
+        {showPlanViaExtension && planviaData && (
+          <div className="border-t border-gray-700/50 bg-primary/95">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Desktop Layout */}
+              <div className="hidden md:flex items-center justify-center h-12 gap-6 text-sm">
+                <div className="flex items-center gap-2 text-gray-300">
+                  <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span className="font-medium">{planviaData.username}</span>
+                </div>
+
+                <div className="h-4 w-px bg-gray-700"></div>
+
+                <div className="flex items-center gap-2 text-gray-300">
+                  <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>
+                    {language === 'en' ? 'Valid until:' : 'Geçerli:'} {formatExpiryDate(planviaData.expiresAt)}
+                  </span>
+                </div>
+
+                <div className="h-4 w-px bg-gray-700"></div>
+
+                <button
+                  onClick={handlePlanViaLogout}
+                  className="flex items-center gap-1.5 text-red-400 hover:text-red-300 transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  <span className="text-xs font-medium">{language === 'en' ? 'Logout' : 'Çıkış'}</span>
+                </button>
+              </div>
+
+              {/* Mobile Layout */}
+              <div className="md:hidden py-2 space-y-1">
+                <div className="flex items-center gap-2 text-xs text-gray-300">
+                  <svg className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span className="font-medium">{planviaData.username}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs text-gray-400">
+                    <svg className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{formatExpiryDate(planviaData.expiresAt)}</span>
+                  </div>
+                  <button
+                    onClick={handlePlanViaLogout}
+                    className="flex items-center gap-1 text-red-400 hover:text-red-300 transition-colors"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    <span className="text-xs font-medium">{language === 'en' ? 'Logout' : 'Çıkış'}</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Portfolio Dropdown */}
@@ -141,7 +255,9 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed top-16 left-0 w-full bg-primary/95 backdrop-blur-sm border-t border-accent/10 z-40"
+            className={`fixed left-0 w-full bg-primary/95 backdrop-blur-sm border-t border-accent/10 z-40 ${
+              showPlanViaExtension && planviaData ? 'top-[112px]' : 'top-16'
+            }`}
             onMouseEnter={() => setIsPortfolioOpen(true)}
             onMouseLeave={() => setIsPortfolioOpen(false)}
           >

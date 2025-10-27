@@ -11,5 +11,8 @@ export default function ConditionalNavbar() {
     return null;
   }
 
-  return <Navbar />;
+  // Check if we're on PlanVia page
+  const isPlanViaPage = pathname === '/portfolio/planvia';
+
+  return <Navbar showPlanViaExtension={isPlanViaPage} />;
 }

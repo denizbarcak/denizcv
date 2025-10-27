@@ -5,8 +5,10 @@ import AnimatedBackground from '@/components/layout/AnimatedBackground';
 import PortfolioHero from '../../../components/sections/PortfolioHero';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/locales/translations';
+import { verifyAccessCode } from '@/lib/api';
 
 interface Project {
   id: string;
@@ -20,12 +22,17 @@ interface Project {
 
 export default function PortfolioSoftware() {
   const { language } = useLanguage();
+  const router = useRouter();
   const [expandedProject, setExpandedProject] = useState<string | null>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [showSecurityDialog, setShowSecurityDialog] = useState(false);
   const [securityCode, setSecurityCode] = useState('');
+  const [username, setUsername] = useState('');
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [hasAccess, setHasAccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const projects: Project[] = [
@@ -74,6 +81,98 @@ export default function PortfolioSoftware() {
     }
   };
 
+  const handleVerifyCode = async () => {
+    // Clear previous error
+    setErrorMessage('');
+
+    // Validate inputs
+    if (!username.trim()) {
+      setErrorMessage(language === 'en' ? 'Please enter username' : 'Lütfen kullanıcı adı giriniz');
+      return;
+    }
+    if (!securityCode.trim()) {
+      setErrorMessage(language === 'en' ? 'Please enter security code' : 'Lütfen güvenlik kodunu giriniz');
+      return;
+    }
+
+    setIsVerifying(true);
+
+    try {
+      const result = await verifyAccessCode(username.trim(), securityCode.trim());
+
+      if (result.valid) {
+        // Save to localStorage
+        const accessData = {
+          username: result.username || username.trim(),
+          code: securityCode.trim(),
+          expiresAt: result.expiresAt,
+          verifiedAt: new Date().toISOString(),
+        };
+        localStorage.setItem('planvia_access', JSON.stringify(accessData));
+
+        // Update access state
+        setHasAccess(true);
+
+        // Close dialog and clear inputs
+        setShowSecurityDialog(false);
+        setUsername('');
+        setSecurityCode('');
+        setErrorMessage('');
+
+        // Redirect to PlanVia page
+        router.push('/portfolio/planvia');
+      } else {
+        // Show error message and clear inputs
+        setErrorMessage(result.message || (language === 'en' ? 'Invalid username or access code' : 'Geçersiz kullanıcı adı veya güvenlik kodu'));
+        setUsername('');
+        setSecurityCode('');
+      }
+    } catch (error) {
+      console.error('Verification error:', error);
+      setErrorMessage(language === 'en' ? 'Failed to verify code. Please try again.' : 'Kod doğrulanamadı. Lütfen tekrar deneyin.');
+      setUsername('');
+      setSecurityCode('');
+    } finally {
+      setIsVerifying(false);
+    }
+  };
+
+  // Check if user has valid access on component mount
+  useEffect(() => {
+    const checkAccess = () => {
+      try {
+        const storedData = localStorage.getItem('planvia_access');
+        if (!storedData) {
+          setHasAccess(false);
+          return;
+        }
+
+        const data = JSON.parse(storedData);
+
+        // Check if access has expired
+        if (data.expiresAt) {
+          const expiryDate = new Date(data.expiresAt);
+          const now = new Date();
+
+          if (now > expiryDate) {
+            // Access expired, remove from localStorage
+            localStorage.removeItem('planvia_access');
+            setHasAccess(false);
+            return;
+          }
+        }
+
+        // Access is valid
+        setHasAccess(true);
+      } catch (error) {
+        console.error('Error checking access:', error);
+        setHasAccess(false);
+      }
+    };
+
+    checkAccess();
+  }, []);
+
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -108,7 +207,12 @@ export default function PortfolioSoftware() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
-            onClick={() => setShowSecurityDialog(false)}
+            onClick={() => {
+              setShowSecurityDialog(false);
+              setUsername('');
+              setSecurityCode('');
+              setErrorMessage('');
+            }}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -141,9 +245,27 @@ export default function PortfolioSoftware() {
                     ? 'For code request, please contact the site owner.'
                     : 'Kod talebi için site sahibiyle iletişime geçebilirsiniz.'}
                 </p>
+
+                {/* Error Message */}
+                {errorMessage && (
+                  <div className="mt-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg">
+                    <p className="text-red-400 text-sm font-medium">
+                      {errorMessage}
+                    </p>
+                  </div>
+                )}
               </div>
 
-              {/* Input */}
+              {/* Username Input */}
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder={language === 'en' ? 'Enter username' : 'Kullanıcı adını girin'}
+                className="w-full px-4 py-3 bg-secondary/50 border border-accent/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-accent transition-colors mb-3"
+              />
+
+              {/* Security Code Input */}
               <input
                 type="password"
                 value={securityCode}
@@ -158,19 +280,29 @@ export default function PortfolioSoftware() {
                   onClick={() => {
                     setShowSecurityDialog(false);
                     setSecurityCode('');
+                    setUsername('');
+                    setErrorMessage('');
                   }}
                   className="flex-1 px-6 py-3 bg-secondary hover:bg-secondary/80 text-white font-semibold rounded-lg transition-all duration-300"
                 >
                   {language === 'en' ? 'Cancel' : 'İptal'}
                 </button>
                 <button
-                  onClick={() => {
-                    // Backend entegrasyonu buraya gelecek
-                    alert(language === 'en' ? 'Code verification will be added' : 'Kod doğrulama eklenecek');
-                  }}
-                  className="flex-1 px-6 py-3 bg-accent hover:bg-accent/90 text-primary font-semibold rounded-lg transition-all duration-300"
+                  onClick={handleVerifyCode}
+                  disabled={isVerifying}
+                  className="flex-1 px-6 py-3 bg-accent hover:bg-accent/90 disabled:bg-accent/50 disabled:cursor-not-allowed text-primary font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  {language === 'en' ? 'OK' : 'Tamam'}
+                  {isVerifying ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      {language === 'en' ? 'Verifying...' : 'Doğrulanıyor...'}
+                    </>
+                  ) : (
+                    <>{language === 'en' ? 'OK' : 'Tamam'}</>
+                  )}
                 </button>
               </div>
             </motion.div>
@@ -453,12 +585,26 @@ export default function PortfolioSoftware() {
                           {/* PlanVia Project Presentation Button */}
                           {project.id === 'planvia' && (
                             <button
-                              onClick={() => setShowSecurityDialog(true)}
-                              className="flex items-center gap-2 px-6 py-3 bg-purple-600/90 hover:bg-purple-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+                              onClick={() => {
+                                if (hasAccess) {
+                                  // If user has access, go directly to PlanVia page
+                                  router.push('/portfolio/planvia');
+                                } else {
+                                  // If no access, show security dialog
+                                  setShowSecurityDialog(true);
+                                }
+                              }}
+                              className={`flex items-center gap-2 px-6 py-3 font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                                hasAccess
+                                  ? 'bg-[#64FFDA] hover:bg-[#4de0bf] text-primary'
+                                  : 'bg-purple-600/90 hover:bg-purple-600 text-white'
+                              }`}
                             >
-                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                              </svg>
+                              {!hasAccess && (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                              )}
                               {language === 'en' ? 'Project Presentation' : 'Proje Sunumu'}
                             </button>
                           )}

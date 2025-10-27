@@ -79,15 +79,16 @@ export const loginAdmin = async (
  * Verify access code for PlanVia
  */
 export const verifyAccessCode = async (
+  username: string,
   code: string
-): Promise<{ valid: boolean; redirectUrl?: string; message?: string }> => {
+): Promise<{ valid: boolean; redirectUrl?: string; message?: string; username?: string; expiresAt?: string }> => {
   try {
     const response = await fetch(`${API_URL}/api/auth/verify-code`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ code }),
+      body: JSON.stringify({ name: username, code }),
     });
 
     const data = await response.json();
