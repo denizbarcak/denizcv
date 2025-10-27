@@ -44,7 +44,8 @@ export default function PlanViaPage() {
         // Validate with backend to check if code still exists and is active
         if (data.username && data.code) {
           try {
-            const response = await fetch('http://localhost:3001/api/auth/validate-access', {
+            const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+            const response = await fetch(`${API_URL}/api/auth/validate-access`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
